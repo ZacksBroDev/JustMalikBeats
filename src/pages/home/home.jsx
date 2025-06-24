@@ -52,9 +52,19 @@ function Home() {
       </section>
 
       <section className="contact" id="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or feedback, feel free to reach out to us.</p>
-        <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+        <h2>Contact Me</h2>
+        <p>Reach out with any questions or ideas and let's make the magic happen.</p>
+        <div className="contact-container">
+          <form action="https://api.web3forms.com/submit" method="POST" className="contact-form" id="contact-form" value="Contact Form From Personal Portfolio">
+            <input type="hidden" name="access_key" value="bd3b1db0-a150-4eb9-8c61-27249b4f0d98" />
+            <input id="name" type="text" name="name" placeholder="Enter Your Name" />
+            <input id="email" type="email" name="email" placeholder="Enter Your Email" />
+            <input type="tel" id="phone" name="phone" placeholder="Enter Your Phone Number" />
+            <input id="subject" type="text" name="subject" placeholder="Enter Subject" />
+            <textarea id="message" name="message" placeholder="Enter Your Message"></textarea>
+            <button id="submit" className="btn">Submit</button>
+          </form>
+        </div>
       </section>
 
       <footer>
