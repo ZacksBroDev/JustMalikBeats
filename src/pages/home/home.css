@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --yellow: #fee100;
+  --purple: #4e148c;
+  --black: #000000;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  background-color: var(--black);
+  color: var(--yellow);
+  padding: 1rem;
+  text-align: center;
+}
+.links{
+  position: fixed;
+  top: 35%;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: transparent;
+  padding: 1rem;
+  z-index: 10;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem;
+}
+.logo img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+  border-radius: 50%;
+  margin-right: 3rem;
+  margin-left: 2rem;
+}
+nav {
+  background-color: transparent;
+  color: var(--yellow);
+  padding: 1rem;
+  text-align: center;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+nav ul li {
+  display: inline;
+  font-size: 1.5rem;
+}
+nav ul li a {
+  color: var(--yellow);
+  text-decoration: underline;
+  font-weight: bold;
+}
+nav ul li a:hover {
+  color: var(--purple);
+  text-decoration: none;
+}
+section {
+  padding: 2rem;
+  width: 100%;
+  height: 120vh;
+}
+
+.hero {
+  background-color: var(--purple);
+  color: var(--yellow);
+  padding: 2rem;
+  text-align: center;
+}
+.about {
+  background-color: var(--yellow);
+  color: var(--black);
+  padding: 2rem;
+  text-align: center;
+}
+.img{
+  height: 95vh;
+  background-color: aqua;
+}
+.music{
+  background-color: var(--black);
+  color: var(--yellow);
+  padding: 2rem;
+  text-align: center;
+}
+.contact {
+  background-color: var(--yellow);
+  color: var(--black);
+  padding: 2rem;
+  text-align: center;
+}
+
+
+
+footer {
+  background-color: var(--black);
+  color: var(--yellow);
+  padding: 1rem;
+  text-align: center;
+}
+
