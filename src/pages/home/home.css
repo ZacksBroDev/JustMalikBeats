@@ -81,22 +81,72 @@ section {
   padding: 2rem;
   text-align: center;
 }
+
+
 .about {
   background-color: var(--yellow);
   color: var(--black);
   padding: 2rem;
   text-align: center;
 }
+
+
 .img{
   height: 95vh;
   background-color: aqua;
 }
+
+
 .music{
   background-color: var(--black);
   color: var(--yellow);
   padding: 2rem;
   text-align: center;
+  height: auto;
 }
+.music ul {
+  margin-top: 2rem;
+  list-style: none;
+  padding: 0;
+  height: 300px;
+  overflow-y: scroll;
+  border: #000000 2px solid;
+}
+.music li {
+  margin: 0.5rem 0;
+  font-size: 3rem;
+}
+.music li:hover{
+  color: var(--purple);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#new-releases{
+  background-color: yellowgreen;
+}
+
+#new-releases h2 {
+  text-align: center;
+  color: var(--black);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+#top-tracks{
+  background-color: gold;
+  color: var(--black);
+  padding: 2rem;
+  text-align: center;
+}
+#top-tracks h2 {
+  text-align: center;
+  color: var(--black);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+
 .contact {
   background-color: var(--yellow);
   color: var(--black);
