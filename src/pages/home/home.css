@@ -1,4 +1,3 @@
-/* Enhanced Home Page Styles - JustMalikBeats */
 * {
   margin: 0;
   padding: 0;
@@ -7,14 +6,13 @@
 body{
   background-color: var(--black);
 }
-
 :root {
   --yellow: #fee100;
   --purple: #4e148c;
   --black: #000000;
 }
 
-/* Enhanced Header */
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -49,7 +47,7 @@ header {
   box-shadow: 0 5px 15px rgba(78, 20, 140, 0.5);
 }
 
-/* Enhanced Navigation */
+/* Navigation */
 nav {
   background-color: transparent;
   color: var(--yellow);
@@ -87,7 +85,7 @@ nav ul li a:hover {
   box-shadow: 0 5px 15px rgba(78, 20, 140, 0.4);
 }
 
-/* Enhanced Social Links */
+/* Social Links */
 .links {
   position: fixed;
   top: 35%;
@@ -122,7 +120,7 @@ nav ul li a:hover {
   height: 100%;
   object-fit: cover;
 }
-/* Enhanced Sections */
+/* Sections */
 section {
   padding: 4rem 2rem;
   width: 100%;
@@ -139,7 +137,7 @@ section ul {
   border: 3px solid var(--purple);
 }
 
-/* Enhanced Hero Section */
+/* Hero Section */
 .hero {
   background: linear-gradient(135deg, var(--purple) 0%, var(--black) 100%);
   color: var(--yellow);
@@ -192,7 +190,7 @@ section ul {
   }
 }
 
-/* Enhanced About Section */
+/* About Section */
 .about {
   background: linear-gradient(135deg, var(--yellow) 0%, #fff3a0 100%);
   color: var(--black);
@@ -243,7 +241,7 @@ section ul {
   opacity: 0.9;
 }
 
-/* Enhanced Image Section */
+/* Image Section */
 .img {
   height: 80vh;
   background: linear-gradient(135deg, var(--purple), var(--black));
@@ -278,7 +276,7 @@ section ul {
 }
 
 
-/* Enhanced Music Sections */
+/* Music Sections */
 .music {
   background-color: var(--black);
   color: var(--yellow);
@@ -322,7 +320,7 @@ section ul {
   box-shadow: 0 5px 15px rgba(78, 20, 140, 0.5);
 }
 
-/* Enhanced New Releases */
+/* New Releases */
 #new-releases {
   background: linear-gradient(135deg, #9acd32, #32cd32);
   color: var(--black);
@@ -352,7 +350,7 @@ section ul {
   color: #9acd32;
 }
 
-/* Enhanced Top Tracks */
+/* Top Tracks */
 #top-tracks {
   background: linear-gradient(135deg, #ffd700, #ffed4e);
   color: var(--black);
@@ -381,7 +379,7 @@ section ul {
 }
 
 
-/* Enhanced Contact Section */
+/* Contact Section */
 .contact {
   background: linear-gradient(135deg, var(--yellow) 0%, #fff3a0 100%);
   color: var(--black);
@@ -428,7 +426,7 @@ section ul {
   z-index: 2;
 }
 
-/* Enhanced Contact Form */
+/* Contact Form */
 .contact-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -503,7 +501,7 @@ input:focus, textarea:focus {
 }
 #submit { grid-area: submit; }
 
-/* Enhanced Footer */
+/* Footer */
 footer {
   background-color: var(--black);
   color: var(--yellow);
@@ -514,17 +512,6 @@ footer {
   position: relative;
   margin: 0;
   display: block;
-}
-
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--purple), var(--yellow), var(--purple));
 }
 
 /* Responsive Design */
