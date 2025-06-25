@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './home.css';
 
 function Home() {
@@ -13,17 +14,15 @@ function Home() {
         <nav>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#music">Music</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><Link to="/blog">Blog</Link></li>
           </ul>
         </nav>
       </header>
 
       <section className="hero" id="home">
-        <h1>Welcome to the Home Page</h1>
-        <p>This is the home page of our application.</p>
-        <p>Feel free to explore the features and functionalities we offer.</p>
+        <h1>Welcome to JustMalikBeats</h1>
+        <p>Where Denver's Sound Comes Alive</p>
+        <p>Discover beats that capture the energy of the Mile High City</p>
       </section>
 
       <div className="links">
@@ -33,8 +32,16 @@ function Home() {
       </div>
 
       <section className="about" id="about">
-        <h2>About Us</h2>
-        <p>This section contains information about our application.</p>
+        <div className="about-content">
+          <div>
+            <h2>JustMalikBeats is a Music Producer From Denver</h2>
+            <p>Creating beats that capture the essence of the Mile High City's vibrant music scene. My sound blends the energy of Denver's underground hip-hop culture with atmospheric melodies inspired by Colorado's stunning landscapes.
+            </p>
+            <p>From late-night studio sessions to collaborating with local artists, I'm passionate about pushing the boundaries of what Denver music can be. Each track tells a story, each beat carries the spirit of this incredible city we call home.
+            </p>
+          </div>
+        </div>
+        
       </section>
 
       <section className="img" id="img">

@@ -1,34 +1,32 @@
+/* Enhanced Home Page Styles - JustMalikBeats */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  background-color: var(--black);
+}
+
 :root {
   --yellow: #fee100;
   --purple: #4e148c;
   --black: #000000;
 }
+
+/* Enhanced Header */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
   background-color: var(--black);
   color: var(--yellow);
   padding: 1rem;
-  text-align: center;
+  border-bottom: 3px solid var(--purple);
+  z-index: 100;
+  box-shadow: 0 5px 20px rgba(78, 20, 140, 0.3);
 }
-.links{
-  position: fixed;
-  top: 35%;
-  right: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  background-color: transparent;
-  padding: 1rem;
-  z-index: 10;
-}
+
 .logo {
   display: flex;
   align-items: center;
@@ -36,185 +34,402 @@ header {
   font-weight: bold;
   padding: 1rem;
 }
+
 .logo img {
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
+  width: 80px;
+  height: 80px;
+  margin-right: 2rem;
   border-radius: 50%;
-  margin-right: 3rem;
-  margin-left: 2rem;
+  border: 3px solid var(--purple);
+  transition: transform 0.3s ease;
 }
+
+.logo img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(78, 20, 140, 0.5);
+}
+
+/* Enhanced Navigation */
 nav {
   background-color: transparent;
   color: var(--yellow);
   padding: 1rem;
-  text-align: center;
 }
+
 nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
+
 nav ul li {
-  display: inline;
   font-size: 1.5rem;
 }
-nav ul li a {
+
+nav ul li a,
+nav ul li a:visited {
   color: var(--yellow);
   text-decoration: underline;
   font-weight: bold;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
 }
+
 nav ul li a:hover {
-  color: var(--purple);
-  text-decoration: none;
-}
-section {
-  padding: 2rem;
-  width: 100%;
-  height: 120vh;
-}
-
-.hero {
-  background-color: var(--purple);
-  color: var(--yellow);
-  padding: 2rem;
-  text-align: center;
-}
-
-
-.about {
-  background-color: var(--yellow);
   color: var(--black);
-  padding: 2rem;
-  text-align: center;
+  background-color: var(--purple);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 20, 140, 0.4);
 }
 
-
-.img{
-  height: 95vh;
-  background-color: aqua;
+/* Enhanced Social Links */
+.links {
+  position: fixed;
+  top: 35%;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 2px solid var(--purple);
+  z-index: 10;
+  backdrop-filter: blur(10px);
 }
 
-
-.music{
-  background-color: var(--black);
-  color: var(--yellow);
-  padding: 2rem;
-  text-align: center;
-  height: auto;
+.links a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
 }
-.music ul {
-  margin-top: 2rem;
+
+.links a:hover {
+  transform: scale(1.2) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(78, 20, 140, 0.6);
+}
+
+.links img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Enhanced Sections */
+section {
+  padding: 4rem 2rem;
+  width: 100%;
+  position: relative;
+  margin: 0;
+}
+
+section ul {
   list-style: none;
   padding: 0;
-  height: 300px;
-  overflow-y: scroll;
-  border: #000000 2px solid;
-}
-.music li {
-  margin: 0.5rem 0;
-  font-size: 3rem;
-}
-.music li:hover{
-  color: var(--purple);
-  text-decoration: underline;
-  font-weight: bold;
+  margin: 0;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(78, 20, 140, 0.3);
+  border: 3px solid var(--purple);
 }
 
-#new-releases{
-  background-color: yellowgreen;
+/* Enhanced Hero Section */
+.hero {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--black) 100%);
+  color: var(--yellow);
+  padding: 8rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/src/assets/icons/294698_beats_icon.png') no-repeat center;
+  background-size: 300px;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease;
+}
+
+.hero p {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease 0.3s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced About Section */
+.about {
+  background: linear-gradient(135deg, var(--yellow) 0%, #fff3a0 100%);
+  color: var(--black);
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: url('/src/assets/icons/MALIKBEATSLOGO.jpg') no-repeat center;
+  background-size: cover;
+  opacity: 0.1;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.about h2 {
+  font-size: 3.5rem;
+  color: var(--black);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(78, 20, 140, 0.2);
+}
+
+.about p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--black);
+  margin-bottom: 2rem;
+  text-align: justify;
+  opacity: 0.9;
+}
+
+/* Enhanced Image Section */
+.img {
+  height: 80vh;
+  background: linear-gradient(135deg, var(--purple), var(--black));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/src/assets/icons/3298138_boombox_music_stereo_tape player_icon.svg') no-repeat center;
+  background-size: 400px;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.img p {
+  font-size: 3rem;
+  color: var(--yellow);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+
+/* Enhanced Music Sections */
+.music {
+  background-color: var(--black);
+  color: var(--yellow);
+  padding: 6rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.music h2 {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  color: var(--yellow);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.music ul {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: rgba(78, 20, 140, 0.1);
+  border: 3px solid var(--purple);
+  border-radius: 20px;
+  padding: 2rem;
+  height: 500px;
+  overflow-y: auto;
+  box-shadow: 0 15px 40px rgba(78, 20, 140, 0.4);
+}
+
+.music li {
+  margin: 1rem 0;
+  font-size: 1.8rem;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.music li:hover {
+  background-color: var(--purple);
+  color: var(--yellow);
+  transform: translateX(10px);
+  box-shadow: 0 5px 15px rgba(78, 20, 140, 0.5);
+}
+
+/* Enhanced New Releases */
+#new-releases {
+  background: linear-gradient(135deg, #9acd32, #32cd32);
+  color: var(--black);
 }
 
 #new-releases h2 {
-  text-align: center;
   color: var(--black);
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
 }
 
-#top-tracks{
-  background-color: gold;
-  color: var(--black);
-  padding: 2rem;
-  text-align: center;
+#new-releases ul {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--black);
+  height: auto;
+  min-height: 300px;
 }
+
+#new-releases li {
+  color: var(--black);
+  font-weight: bold;
+}
+
+#new-releases li:hover {
+  background-color: var(--black);
+  color: #9acd32;
+}
+
+/* Enhanced Top Tracks */
+#top-tracks {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: var(--black);
+}
+
 #top-tracks h2 {
-  text-align: center;
   color: var(--black);
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+#top-tracks ul {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--black);
+}
+
+#top-tracks li {
+  color: var(--black);
+  font-weight: bold;
+}
+
+#top-tracks li:hover {
+  background-color: var(--black);
+  color: #ffd700;
 }
 
 
+/* Enhanced Contact Section */
 .contact {
-  background-color: var(--yellow);
+  background: linear-gradient(135deg, var(--yellow) 0%, #fff3a0 100%);
   color: var(--black);
-  padding: 2rem;
+  padding: 6rem 2rem 4rem 2rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+  min-height: auto;
 }
 
-.contact button {
-  background-image: linear-gradient(to right, var(--purple), var(--black));
-  font-weight: bolder;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  align-self: start;
+.contact::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: var(--purple);
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: 1;
 }
-#submit:hover{
-  background-image: linear-gradient(to right, var(--purple), var(--purple));
-}
+
 .contact h2 {
-  text-align: center;
-  color:  var(--black);
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-.contact p {
-  text-align: center;
+  font-size: 3.5rem;
   color: var(--black);
-  font-size: 1.5rem;
   margin-bottom: 2rem;
-  width: 400px;
-  margin: 0 auto;
+  text-shadow: 2px 2px 4px rgba(78, 20, 140, 0.2);
+  position: relative;
+  z-index: 2;
 }
-input, textarea{
-  background-color: lightblue;
-  font-size: 20px;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
-  border: none;
-  width:100%;
-  padding:10px;
-  box-sizing: border-box;
+
+.contact p {
+  font-size: 1.5rem;
+  color: var(--black);
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  opacity: 0.9;
+  position: relative;
+  z-index: 2;
 }
-#name{
-  grid-area: name;
-}
-#email{
-  grid-area: email;
-}
-#phone{
-  grid-area: phone;
-}
-#subject{
-  grid-area: subject;
-}
-#message{
-  grid-area: message;
-  width:100%;
-  height: 100%;
-  align-self: stretch;
-  justify-self: stretch;
-  resize: none;
-}
-#submit{
-  grid-area: submit;
-}
-.contact-form{
+
+/* Enhanced Contact Form */
+.contact-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1.5fr 1.5fr 6fr 1fr;
@@ -223,19 +438,261 @@ input, textarea{
     "phone subject"
     "message message"
     "submit submit";
-  gap: 1rem;
-  border-radius: 10px;
-  padding: 1rem;
-  width: 80%;
-  max-width: 800px;
+  gap: 2rem;
+  border-radius: 20px;
+  padding: 3rem;
+  width: 90%;
+  max-width: 900px;
   margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 3px solid var(--purple);
+  box-shadow: 0 15px 40px rgba(78, 20, 140, 0.3);
+  position: relative;
+  z-index: 2;
 }
 
+input, textarea {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+  font-size: 1.2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(78, 20, 140, 0.2);
+  border: 2px solid var(--purple);
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--yellow);
+  box-shadow: 0 8px 25px rgba(78, 20, 140, 0.4);
+  transform: translateY(-2px);
+}
+
+.contact button {
+  background: linear-gradient(135deg, var(--purple), var(--black));
+  color: var(--yellow);
+  padding: 1.5rem 3rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(78, 20, 140, 0.4);
+}
+
+#submit:hover {
+  background: linear-gradient(135deg, var(--yellow), var(--purple));
+  color: var(--black);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(78, 20, 140, 0.6);
+}
+
+#name { grid-area: name; }
+#email { grid-area: email; }
+#phone { grid-area: phone; }
+#subject { grid-area: subject; }
+#message { 
+  grid-area: message;
+  resize: none;
+}
+#submit { grid-area: submit; }
+
+/* Enhanced Footer */
 footer {
   background-color: var(--black);
   color: var(--yellow);
-  padding: 1rem;
+  padding: 3rem;
   text-align: center;
+  border-top: 3px solid var(--purple);
+  font-size: 1.2rem;
+  position: relative;
+  margin: 0;
+  display: block;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple), var(--yellow), var(--purple));
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .about h2 {
+    font-size: 3rem;
+  }
+  
+  .music h2,
+  #new-releases h2,
+  #top-tracks h2,
+  .contact h2 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .logo {
+    padding: 0.5rem;
+  }
+  
+  .logo img {
+    width: 60px;
+    height: 60px;
+    margin-right: 1rem;
+  }
+  
+  nav ul {
+    gap: 1rem;
+  }
+  
+  nav ul li {
+    font-size: 1.2rem;
+  }
+  
+  .links {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    top: auto;
+    flex-direction: row;
+    padding: 1rem;
+  }
+  
+  .links a {
+    width: 40px;
+    height: 40px;
+  }
+  
+  section {
+    padding: 3rem 1rem;
+  }
+  
+  .hero {
+    padding: 6rem 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+  
+  .about {
+    padding: 4rem 1rem;
+  }
+  
+  .about h2 {
+    font-size: 2.5rem;
+  }
+  
+  .about p {
+    font-size: 1.1rem;
+  }
+  
+  .img p {
+    font-size: 2rem;
+  }
+  
+  .music {
+    padding: 4rem 1rem;
+  }
+  
+  .music li {
+    font-size: 1.5rem;
+  }
+  
+  .contact {
+    padding: 4rem 1rem;
+  }
+  
+  .contact-form {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "name"
+      "email"
+      "phone"
+      "subject"
+      "message"
+      "submit";
+    padding: 2rem;
+    width: 95%;
+  }
+  
+  input, textarea {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  
+  .contact button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .about h2 {
+    font-size: 2rem;
+  }
+  
+  .music h2,
+  #new-releases h2,
+  #top-tracks h2,
+  .contact h2 {
+    font-size: 2rem;
+  }
+  
+  .music li {
+    font-size: 1.2rem;
+  }
+  
+  .img p {
+    font-size: 1.5rem;
+  }
+  
+  .contact-form {
+    padding: 1.5rem;
+  }
 }
 
 
