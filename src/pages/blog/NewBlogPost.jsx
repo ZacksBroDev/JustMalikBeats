@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useBlog } from '../../context/BlogContext';
-import { useAuth } from '../../context/AuthContext';
 import './NewBlogPost.css';
 
 const NewBlogPost = () => {
   const navigate = useNavigate();
   const { addBlogPost } = useBlog();
-  const { logout } = useAuth();
   
   const [formData, setFormData] = useState({
     title: '',
@@ -15,19 +13,45 @@ const NewBlogPost = () => {
     category: 'Production',
     content: '',
     tags: '',
-    image: '/src/assets/icons/294698_beats_icon.png'
+    image: null
   });
+
+  const [imagePreview, setImagePreview] = useState(null);
+
+  // Cleanup object URL when component unmounts
+  useEffect(() => {
+    return () => {
+      if (imagePreview) {
+        URL.revokeObjectURL(imagePreview);
+      }
+    };
+  }, [imagePreview]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const categories = ['Production', 'Education', 'Industry', 'Reviews', 'Personal'];
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    const { name, value, type, files } = e.target;
+    
+    if (type === 'file') {
+      const file = files[0];
+      if (file) {
+        setFormData(prev => ({
+          ...prev,
+          [name]: file
+        }));
+        
+        // Create preview URL
+        const previewUrl = URL.createObjectURL(file);
+        setImagePreview(previewUrl);
+      }
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -48,10 +72,23 @@ const NewBlogPost = () => {
         .map(paragraph => `<p>${paragraph.trim()}</p>`)
         .join('\n\n');
 
+      // Handle image upload
+      let imageUrl = '/src/assets/icons/294698_beats_icon.png'; // Default image
+      
+      if (formData.image) {
+        // Convert file to base64 data URL for storage
+        const reader = new FileReader();
+        imageUrl = await new Promise((resolve) => {
+          reader.onload = (e) => resolve(e.target.result);
+          reader.readAsDataURL(formData.image);
+        });
+      }
+
       const newPost = {
         ...formData,
         content: processedContent,
-        tags: processedTags
+        tags: processedTags,
+        image: imageUrl
       };
 
       const newPostId = addBlogPost(newPost);
@@ -83,11 +120,6 @@ const NewBlogPost = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/blog">Blog</Link></li>
             <li><Link to="/blog/admin">Admin</Link></li>
-            <li>
-              <button onClick={logout} className="logout-btn">
-                Logout
-              </button>
-            </li>
           </ul>
         </nav>
       </header>
@@ -145,16 +177,31 @@ const NewBlogPost = () => {
 
             <div className="form-group">
               <label htmlFor="image">Featured Image</label>
-              <select
+              <input
+                type="file"
                 id="image"
                 name="image"
-                value={formData.image}
+                accept="image/*"
                 onChange={handleChange}
-              >
-                <option value="/src/assets/icons/294698_beats_icon.png">Beats Icon</option>
-                <option value="/src/assets/icons/3298138_boombox_music_stereo_tape player_icon.svg">Boombox Icon</option>
-                <option value="/src/assets/icons/MALIKBEATSLOGO.jpg">Malik Beats Logo</option>
-              </select>
+                className="file-input"
+              />
+              {imagePreview && (
+                <div className="image-preview">
+                  <img src={imagePreview} alt="Preview" />
+                  <button 
+                    type="button" 
+                    onClick={() => {
+                      setImagePreview(null);
+                      setFormData(prev => ({ ...prev, image: null }));
+                      document.getElementById('image').value = '';
+                    }}
+                    className="remove-image"
+                  >
+                    Remove
+                  </button>
+                </div>
+              )}
+              <small>Upload an image file (JPG, PNG, GIF, etc.)</small>
             </div>
           </div>
 
