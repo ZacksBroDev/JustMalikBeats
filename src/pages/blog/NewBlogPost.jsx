@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useBlog } from '../../context/BlogContext';
+import { useAuth } from '../../context/AuthContext';
 import './NewBlogPost.css';
 
 const NewBlogPost = () => {
   const navigate = useNavigate();
   const { addBlogPost } = useBlog();
+  const { logout } = useAuth();
   
   const [formData, setFormData] = useState({
     title: '',
@@ -120,6 +122,11 @@ const NewBlogPost = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/blog">Blog</Link></li>
             <li><Link to="/blog/admin">Admin</Link></li>
+            <li>
+              <button onClick={logout} className="logout-btn">
+                Logout
+              </button>
+            </li>
           </ul>
         </nav>
       </header>

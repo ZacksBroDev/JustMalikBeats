@@ -16,7 +16,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/new" element={<NewBlogPost />} />
+          <Route path="/blog/new" element={
+            <ProtectedRoute>
+              <NewBlogPost />
+            </ProtectedRoute>
+          } />
           <Route path="/blog/admin" element={
             <ProtectedRoute>
               <BlogAdmin />
