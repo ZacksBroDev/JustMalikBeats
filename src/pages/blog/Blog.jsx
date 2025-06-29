@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useBlog } from '../../context/BlogContext';
 import { blogCategories } from './blogData';
 import './Blog.css';
+import css from '/src/assets/css/style.module.css';
 
 function Blog() {
   const { blogPosts } = useBlog();
@@ -13,35 +14,18 @@ function Blog() {
     : blogPosts.filter(post => post.category === selectedCategory);
 
   return (
-    <div className="blog-container">
-      <header className="blog-header">
-        <div className="logo">
-          <Link to="/">
-            <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats-Logo" />
-            <h1>JustMalikBeats</h1>
-          </Link>
-        </div>
-        
-        <nav>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/blog" className="active">Blog</Link></li>
-            <li><Link to="/blog/admin">Admin</Link></li>
-          </ul>
-        </nav>
-      </header>
-
-      <div className="blog-hero">
+    <div className="blogContainer">
+      <div className='blog-hero'>
         <h1>The Beat Chronicles</h1>
         <p>Insights, stories, and knowledge from the studio</p>
-        <Link to="/blog/new" className="create-post-btn">
+        <Link to="/blog/new" className='create-post-btn'>
           <span>+</span>
           Create New Post
         </Link>
       </div>
 
-      <main className="blog-main">
-        <div className="blog-content">
+      <main className={css.main}>
+        <div className={css.content}>
           <div className="blog-filters">
             <button 
               className={selectedCategory === 'All' ? 'active' : ''}
@@ -89,16 +73,16 @@ function Blog() {
           </div>
         </div>
 
-        <aside className="blog-sidebar">
-          <div className="sidebar-widget">
+        <aside className={css.sidebar}>
+          <div className={css.sidebarWidget}>
             <h3>About Me</h3>
-            <div className="about-widget">
-              <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats" className="author-avatar" />
+            <div className={css.aboutWidget}>
+              <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats" className={css.authorAvatar} />
               <p>Music Producer from Denver, creating beats that capture the essence of the Mile High City's vibrant music scene.</p>
             </div>
           </div>
 
-          <div className="sidebar-widget">
+          <div className={css.sidebarWidget}>
             <h3>Recent Posts</h3>
             <ul className="recent-posts">
               {blogPosts.slice(0, 3).map(post => (
@@ -110,18 +94,12 @@ function Blog() {
             </ul>
           </div>
 
-          <div className="sidebar-widget">
+          <div className={css.sidebarWidget}>
             <h3>Follow Me</h3>
-            <div className="social-links">
-              <a href="https://open.spotify.com/artist/31qEeNT1N54KjOMpPh3OmA" target="_blank" rel="noopener noreferrer">
-                <img src="/src/assets/icons/spotify.png" alt="Spotify" />
-              </a>
-              <a href="https://www.youtube.com/@JustMalikBeats" target="_blank" rel="noopener noreferrer">
-                <img src="/src/assets/icons/youtube.png" alt="YouTube" />
-              </a>
-              <a href="https://www.instagram.com/justmalikbeats/" target="_blank" rel="noopener noreferrer">
-                <img src="/src/assets/icons/insta.png" alt="Instagram" />
-              </a>
+            <div className={css.socialLinks}>
+              <a href="https://open.spotify.com/artist/31qEeNT1N54KjOMpPh3OmA" target="_blank" rel="noopener noreferrer"><img src="/src/assets/icons/spotify.png" alt="Spotify" /></a>
+              <a href="https://www.youtube.com/@JustMalikBeats" target="_blank" rel="noopener noreferrer"><img src="/src/assets/icons/youtube.png" alt="YouTube" /></a>
+              <a href="https://www.instagram.com/justmalikbeats/" target="_blank" rel="noopener noreferrer"><img src="/src/assets/icons/insta.png" alt="Instagram" /></a>
             </div>
           </div>
         </aside>
