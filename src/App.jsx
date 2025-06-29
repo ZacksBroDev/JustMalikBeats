@@ -8,11 +8,13 @@ import Blog from './pages/blog/Blog';
 import BlogPost from './pages/blog/BlogPost';
 import NewBlogPost from './pages/blog/NewBlogPost';
 import BlogAdmin from './pages/blog/BlogAdmin';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <AuthProvider>
       <BlogProvider>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
