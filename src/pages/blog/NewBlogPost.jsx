@@ -121,7 +121,7 @@ const NewBlogPost = () => {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/blog">Blog</Link></li>
-            <li><Link to="/blog/admin">Admin</Link></li>
+            <li><Link to="/admin">Admin</Link></li>
             <li>
               <button onClick={logout} className="logout-btn">
                 Logout
