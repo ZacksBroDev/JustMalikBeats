@@ -14,6 +14,7 @@ A modern React website for music producer JustMalikBeats featuring a blog system
 ## Quick Start
 
 ### 1. Install Dependencies
+
 ```bash
 npm install
 ```
@@ -33,23 +34,27 @@ STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
 5. Update the publishable key in `src/config/stripe.js`:
 
 ```javascript
-const stripePromise = loadStripe('pk_test_your_stripe_publishable_key_here');
+const stripePromise = loadStripe("pk_test_your_stripe_publishable_key_here");
 ```
 
 ### 3. Run the Application
 
 #### Option 1: Run Both Frontend and Backend
+
 ```bash
 npm run dev:full
 ```
 
 #### Option 2: Run Separately
+
 Terminal 1 (Backend):
+
 ```bash
 npm run server
 ```
 
 Terminal 2 (Frontend):
+
 ```bash
 npm run dev
 ```
@@ -57,18 +62,21 @@ npm run dev
 ## Pages & Features
 
 ### Music Catalog (`/music`)
+
 - Browse available beats and instrumentals
 - Add tracks to shopping cart
 - Secure checkout with Stripe
 - Preview audio samples
 
 ### Blog System (`/blog`)
+
 - View all blog posts
 - Read individual posts
 - Admin login (password: `malik2025beats`)
 - Create new posts (admin only)
 
 ### Admin Features
+
 - **Blog Admin**: `/blog/admin` - Manage blog posts
 - **New Post**: `/blog/new` - Create new blog posts
 - **Protected Routes**: Admin authentication required
@@ -78,11 +86,13 @@ npm run dev
 The payment system includes:
 
 1. **Frontend Components**:
+
    - `MusicCatalog.jsx` - Music browsing and cart
    - `CheckoutForm.jsx` - Stripe payment form
    - `MusicContext.jsx` - State management
 
 2. **Backend Server** (`server.js`):
+
    - Payment intent creation
    - Payment confirmation
    - Download link generation
