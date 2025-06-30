@@ -229,6 +229,67 @@ section ul {
   box-shadow: 0 5px 15px rgba(78, 20, 140, 0.5);
 }
 
+/* Music Preview Section */
+.music-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.track-preview {
+  background: rgba(78, 20, 140, 0.1);
+  border: 2px solid var(--purple);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.track-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(78, 20, 140, 0.4);
+  border-color: var(--yellow);
+}
+
+.track-preview h4 {
+  color: var(--yellow);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.track-preview p {
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.music-cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.music-link {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--purple), var(--yellow));
+  color: #000;
+  text-decoration: none;
+  padding: 1.5rem 3rem;
+  border-radius: 50px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 20px rgba(78, 20, 140, 0.3);
+}
+
+.music-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(78, 20, 140, 0.5);
+  background: linear-gradient(45deg, var(--yellow), var(--purple));
+}
+
 /* New Releases */
 #new-releases h2 {
   font-size: 3.5rem;
