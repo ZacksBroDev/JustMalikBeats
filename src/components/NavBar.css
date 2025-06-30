@@ -98,3 +98,38 @@ nav ul li a:hover {
   background-color: var(--purple);
   text-decoration: none;
 }
+
+/* User Menu Styles */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-name {
+  color: var(--yellow);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.login-link,
+.logout-link {
+  background: var(--purple);
+  color: var(--yellow);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.login-link:hover,
+.logout-link:hover {
+  color: var(--black);
+  background-color: var(--yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}

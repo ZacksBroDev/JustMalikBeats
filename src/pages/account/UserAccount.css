@@ -1,0 +1,354 @@
+/* User Account Styles */
+.user-account {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  padding: 80px 20px 40px;
+}
+
+.account-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #333;
+}
+
+.user-info h1 {
+  font-size: 2.5rem;
+  margin: 0 0 20px 0;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.user-details h2 {
+  margin: 0 0 8px 0;
+  color: #4ecdc4;
+  font-size: 1.5rem;
+}
+
+.user-email {
+  color: #ccc;
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+}
+
+.join-date {
+  color: #999;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.edit-profile-btn {
+  background: #4ecdc4;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.edit-profile-btn:hover {
+  background: #45b7aa;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+}
+
+.logout-btn {
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+}
+
+/* Account Stats */
+.account-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(78, 205, 196, 0.2);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+}
+
+.stat-info h3 {
+  margin: 0;
+  font-size: 2rem;
+  color: #4ecdc4;
+}
+
+.stat-info p {
+  margin: 5px 0 0 0;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Purchase History */
+.purchase-history {
+  margin-bottom: 50px;
+}
+
+.purchase-history h3 {
+  color: #4ecdc4;
+  font-size: 1.8rem;
+  margin: 0 0 30px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.no-purchases {
+  text-align: center;
+  padding: 60px 20px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.no-purchases-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.no-purchases h4 {
+  color: #4ecdc4;
+  font-size: 1.5rem;
+  margin: 0 0 15px 0;
+}
+
+.no-purchases p {
+  color: #ccc;
+  margin: 0 0 30px 0;
+  line-height: 1.6;
+}
+
+.browse-music-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, #4ecdc4, #45b7aa);
+  color: #000;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.browse-music-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+}
+
+.purchases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.purchase-item {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.purchase-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.purchase-info h4 {
+  margin: 0 0 5px 0;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.purchase-info .artist {
+  margin: 0 0 8px 0;
+  color: #4ecdc4;
+  font-weight: 500;
+}
+
+.purchase-date {
+  margin: 0;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.purchase-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #4ecdc4;
+}
+
+.download-links {
+  display: flex;
+  gap: 10px;
+}
+
+.download-btn {
+  background: #4ecdc4;
+  color: #000;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background: #45b7aa;
+  transform: translateY(-1px);
+}
+
+.download-btn.stems {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.download-btn.stems:hover {
+  background: #ff5252;
+}
+
+/* Account Actions */
+.account-actions h3 {
+  color: #4ecdc4;
+  font-size: 1.8rem;
+  margin: 0 0 30px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.action-btn {
+  background: linear-gradient(45deg, #4ecdc4, #45b7aa);
+  color: #000;
+  text-decoration: none;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+}
+
+.action-btn.secondary {
+  background: #666;
+  color: #fff;
+}
+
+.action-btn.secondary:hover {
+  background: #555;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .account-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .header-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .account-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .purchase-item {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .purchase-details {
+    align-items: center;
+  }
+
+  .download-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .download-btn {
+    text-align: center;
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+}
