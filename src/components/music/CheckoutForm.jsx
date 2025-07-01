@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useMusic } from '../../context/MusicContext';
 
@@ -8,68 +8,87 @@ const CheckoutForm = ({ cart, total, onSuccess, onCancel }) => {
   const { addPurchase } = useMusic();
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentError, setPaymentError] = useState(null);
+  const [isReady, setIsReady] = useState(false);
+
+  // Wait for Stripe to be fully loaded
+  useEffect(() => {
+    if (stripe && elements) {
+      setIsReady(true);
+    }
+  }, [stripe, elements]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!stripe || !elements) {
+    if (!stripe || !elements || !isReady) {
+      setPaymentError('Payment system is still loading. Please try again.');
       return;
     }
 
     setIsProcessing(true);
     setPaymentError(null);
 
-    const cardElement = elements.getElement(CardElement);
-
-    // Create payment method
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-    });
-
-    if (error) {
-      setPaymentError(error.message);
-      setIsProcessing(false);
-      return;
-    }
-
     try {
-      // Create payment intent on your backend
-      const response = await fetch('http://localhost:3001/api/create-payment-intent', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          items: cart.map(item => ({ id: item.id, priceId: item.priceId })),
-          amount: Math.round(parseFloat(total) * 100), // Convert to cents
-        }),
-      });
+      const cardElement = elements.getElement(CardElement);
 
-      if (!response.ok) {
-        throw new Error('Failed to create payment intent');
+      if (!cardElement) {
+        throw new Error('Card element not found');
       }
 
-      const { clientSecret } = await response.json();
-
-      if (!clientSecret) {
-        throw new Error('No client secret received');
-      }
-
-      // Confirm payment
-      const { error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: paymentMethod.id,
+      // Create payment method
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
       });
 
-      if (confirmError) {
-        setPaymentError(confirmError.message);
-      } else {
-        // Payment successful
-        addPurchase(cart);
-        onSuccess();
+      if (error) {
+        setPaymentError(error.message);
+        setIsProcessing(false);
+        return;
+      }
+
+      try {
+        // Create payment intent on your backend
+        const response = await fetch('http://localhost:3001/api/create-payment-intent', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            items: cart.map(item => ({ id: item.id, priceId: item.priceId })),
+            amount: Math.round(parseFloat(total) * 100), // Convert to cents
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to create payment intent');
+        }
+
+        const { clientSecret } = await response.json();
+
+        if (!clientSecret) {
+          throw new Error('No client secret received');
+        }
+
+        // Confirm payment
+        const { error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+          payment_method: paymentMethod.id,
+        });
+
+        if (confirmError) {
+          setPaymentError(confirmError.message);
+        } else {
+          // Payment successful
+          addPurchase(cart);
+          onSuccess();
+        }
+      } catch (err) {
+        console.error('Payment error:', err);
+        setPaymentError('Payment failed. Please try again.');
       }
     } catch (err) {
-      setPaymentError('Payment failed. Please try again.');
+      console.error('General error:', err);
+      setPaymentError('An unexpected error occurred. Please try again.');
     }
 
     setIsProcessing(false);
@@ -119,7 +138,7 @@ const CheckoutForm = ({ cart, total, onSuccess, onCancel }) => {
         <button 
           type="submit" 
           className="pay-button"
-          disabled={!stripe || isProcessing}
+          disabled={!stripe || isProcessing || !isReady}
         >
           {isProcessing ? 'Processing...' : `Pay $${total}`}
         </button>

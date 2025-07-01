@@ -5,7 +5,18 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// Check if we have a valid Stripe secret key
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+if (!stripeSecretKey || !stripeSecretKey.startsWith('sk_')) {
+  console.warn('⚠️  Invalid or missing STRIPE_SECRET_KEY in .env file');
+  console.warn('   Please add your actual Stripe secret key (starts with sk_test_ or sk_live_)');
+  console.warn('   Payments will not work until this is fixed.');
+}
+
+const stripe = stripeSecretKey && stripeSecretKey.startsWith('sk_') 
+  ? new Stripe(stripeSecretKey)
+  : null;
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -13,9 +24,24 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    stripe: stripe ? 'configured' : 'not configured',
+    message: stripe ? 'Ready for payments' : 'Stripe secret key needed'
+  });
+});
+
 // Create payment intent
 app.post("/api/create-payment-intent", async (req, res) => {
   try {
+    if (!stripe) {
+      return res.status(500).json({ 
+        error: "Stripe not configured. Please check your environment variables." 
+      });
+    }
+
     const { items, amount } = req.body;
 
     // Create a PaymentIntent with the order amount and currency
