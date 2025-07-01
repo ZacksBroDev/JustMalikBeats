@@ -5,7 +5,7 @@ section{
   padding: 6rem 2rem;
   border: var(--purple) 2px solid;
   border-radius: 20px;
-  margin: 2rem;
+  margin-bottom: 2rem;
 }
 
 section:hover {
