@@ -439,7 +439,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .admin-header {
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
   }
 
@@ -449,7 +449,7 @@
   }
 
   .admin-tabs {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .section-header {
