@@ -9,9 +9,8 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
+  align-items: center;
+  gap: 0rem;
 }
 
 nav ul li {
@@ -45,7 +44,7 @@ nav ul li a:hover {
   color: var(--yellow);
   padding: 1rem;
   border-bottom: 3px solid var(--purple);
-
+  position: relative;
 }
 
 .blog-header .logo {
@@ -53,7 +52,8 @@ nav ul li a:hover {
   align-items: center;
   font-size: 1.5rem;
   font-weight: bold;
-  padding: 1rem;
+  padding: 0;
+  z-index: 1001;
 }
 
 .blog-header .logo a {
@@ -64,52 +64,104 @@ nav ul li a:hover {
 }
 
 .blog-header .logo img {
-  width: 80px;
-  height: 80px;
-  margin-right: 2rem;
+  width: 60px;
+  height: 60px;
+  margin-right: 1rem;
   border-radius: 50%;
   border: 2px solid var(--purple);
 }
 
-.blog-header nav ul {
+.blog-header .logo h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  position: relative;
+}
+
+.mobile-menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--yellow);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Navigation Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
   margin: 0;
   padding: 0;
 }
 
-.blog-header nav ul li {
-  font-size: 1.5rem;
+.navbar ul li {
+  font-size: 1.2rem;
 }
 
-.blog-header nav ul li a {
+.navbar ul li a {
   color: var(--yellow);
   text-decoration: underline;
   font-weight: bold;
   transition: all 0.3s ease;
   padding: 0.5rem 1rem;
   border-radius: 5px;
+  white-space: nowrap;
 }
-
-.blog-header nav ul li a:hover {
+.navbar ul li a:hover {
   color: var(--black);
   background-color: var(--purple);
   text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 20, 140, 0.4);
 }
 
 /* User Menu Styles */
 .user-menu {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .user-name {
   color: var(--yellow);
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
 .login-link,
@@ -124,6 +176,7 @@ nav ul li a:hover {
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .login-link:hover,
@@ -132,4 +185,206 @@ nav ul li a:hover {
   background-color: var(--yellow);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .blog-header {
+    padding: 0.75rem;
+  }
+  
+  .navbar ul {
+    gap: 1.5rem;
+  }
+  
+  .navbar ul li {
+    font-size: 1.1rem;
+  }
+  
+  .blog-header .logo h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .blog-header {
+    padding: 1rem;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .blog-header .logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 0.75rem;
+  }
+  
+  .blog-header .logo h1 {
+    font-size: 1.2rem;
+  }
+  
+  /* Show mobile menu toggle */
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  /* Hide desktop navigation */
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100vh;
+    background-color: var(--black);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    padding-top: 80px;
+    border-left: 3px solid var(--purple);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .navbar.mobile-open {
+    transform: translateX(0);
+  }
+  
+  /* Mobile backdrop with blur effect */
+  .mobile-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999;
+    cursor: pointer;
+  }
+  
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
+  
+  .navbar ul li {
+    font-size: 1.3rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .navbar ul li a {
+    display: block;
+    padding: 1rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .user-menu {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .user-name {
+    font-size: 1.1rem;
+  }
+  
+  .login-link,
+  .logout-link {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-header {
+    padding: 0.75rem;
+  }
+  
+  .blog-header .logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 0.5rem;
+  }
+  
+  .blog-header .logo h1 {
+    font-size: 1rem;
+  }
+  
+  .mobile-menu-toggle {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .navbar {
+    padding-top: 70px;
+  }
+  
+  .navbar ul li {
+    font-size: 1.2rem;
+  }
+  
+  .navbar ul li a {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .blog-header .logo h1 {
+    font-size: 0.9rem;
+  }
+  
+  .navbar ul li {
+    font-size: 1.1rem;
+  }
+}
+
+/* Legacy Navigation Styles (for backwards compatibility) */
+nav {
+  background-color: transparent;
+  color: var(--yellow);
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+}
+
+nav ul li div {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+}
+
+nav ul li {
+  font-size: 1.5rem;
+}
+
+nav ul li a,
+nav ul li a:visited {
+  color: var(--yellow);
+  text-decoration: underline;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+nav ul li a:hover {
+  color: var(--black);
+  background-color: var(--purple);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 20, 140, 0.4);
 }
