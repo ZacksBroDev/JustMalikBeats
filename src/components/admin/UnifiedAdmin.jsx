@@ -41,52 +41,18 @@ const UnifiedAdmin = () => {
 
   return (
     <div className="unified-admin">
-      <header className="admin-header">
-        <div className="logo">
-          <Link to="/">
-            <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats-Logo" />
-            <h1>Admin Dashboard</h1>
-          </Link>
-        </div>
-        
-        <nav>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/music">Music Store</Link></li>
-            <li><Link to="/blog">Blog</Link></li>
-            <li>
-              <button onClick={logout} className="logout-btn">
-                Logout
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
       <div className="admin-container">
         <div className="admin-tabs">
-          <button 
-            className={`tab ${activeTab === 'overview' ? 'active' : ''}`}
-            onClick={() => setActiveTab('overview')}
-          >
+          <button className={`tab ${activeTab === 'overview' ? 'active' : ''}`} onClick={() => setActiveTab('overview')}>
             Overview
           </button>
-          <button 
-            className={`tab ${activeTab === 'blog' ? 'active' : ''}`}
-            onClick={() => setActiveTab('blog')}
-          >
+          <button className={`tab ${activeTab === 'blog' ? 'active' : ''}`} onClick={() => setActiveTab('blog')}>
             Blog ({totalBlogPosts})
           </button>
-          <button 
-            className={`tab ${activeTab === 'music' ? 'active' : ''}`}
-            onClick={() => setActiveTab('music')}
-          >
+          <button className={`tab ${activeTab === 'music' ? 'active' : ''}`} onClick={() => setActiveTab('music')}>
             Music ({totalTracks})
           </button>
-          <button 
-            className={`tab ${activeTab === 'sales' ? 'active' : ''}`}
-            onClick={() => setActiveTab('sales')}
-          >
+          <button className={`tab ${activeTab === 'sales' ? 'active' : ''}`} onClick={() => setActiveTab('sales')}>
             Sales ({totalSales})
           </button>
         </div>
