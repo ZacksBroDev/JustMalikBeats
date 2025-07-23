@@ -52,11 +52,20 @@ function Home() {
 
           <section className="music" id="new-releases">
             <h2>Latest Releases</h2>
-            <ul>
-              <li>Release 1: Description of release 1.</li>
-              <li>Release 2: Description of release 2.</li>
-              <li>Release 3: Description of release 3.</li>
-            </ul>
+           <div className="music-preview">
+              <div className="track-preview">
+                <h4>Denver Nights</h4>
+                <p>A smooth hip-hop beat inspired by Denver's nightlife - $2.99</p>
+              </div>
+              <div className="track-preview">
+                <h4>Mountain High</h4>
+                <p>High-energy trap beat with Colorado mountain vibes - $3.99</p>
+              </div>
+              <div className="track-preview">
+                <h4>Studio Sessions</h4>
+                <p>Smooth R&B instrumental perfect for late-night sessions - $4.99</p>
+              </div>
+            </div>
           </section>
 
           <section className="music" id="top-tracks">
