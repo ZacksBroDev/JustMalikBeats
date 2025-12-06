@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './home.css';
 import css from '/src/assets/css/style.module.css';
+import malikLogo from '/src/assets/icons/MALIKBEATSLOGO.jpg';
+import spotifyIcon from '/src/assets/icons/spotify.png';
+import youtubeIcon from '/src/assets/icons/youtube.png';
+import instaIcon from '/src/assets/icons/insta.png';
 
 function Home() {
   return (
@@ -31,7 +35,7 @@ function Home() {
             <div className={css.sidebarWidget}>
               <h3>About Me</h3>
               <div className={css.aboutWidget}>
-                <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats" className={css.authorAvatar} />
+                <img src={malikLogo} alt="JustMalikBeats" className={css.authorAvatar} />
                 <p>Music Producer from Denver, creating beats that capture the essence of the Mile High City's vibrant music scene.</p>
               </div>
             </div>
@@ -39,9 +43,9 @@ function Home() {
             <div className={css.sidebarWidget}>
               <h3>Follow Me</h3>
               <div className={css.socialLinks}>
-                <a href="https://open.spotify.com/artist/31qEeNT1N54KjOMpPh3OmA" target="_blank" rel="noopener noreferrer"><img src="/src/assets/icons/spotify.png" alt="Spotify" /></a>
-                <a href="https://www.youtube.com/@JustMalikBeats" target="_blank" rel="noopener noreferrer"><img src="/src/assets/icons/youtube.png" alt="YouTube" /></a>
-                <a href="https://www.instagram.com/justmalikbeats/" target="_blank" rel="noopener noreferrer"><img src="/src/assets/icons/insta.png" alt="Instagram" /></a>
+                <a href="https://open.spotify.com/artist/31qEeNT1N54KjOMpPh3OmA" target="_blank" rel="noopener noreferrer"><img src={spotifyIcon} alt="Spotify" /></a>
+                <a href="https://www.youtube.com/@JustMalikBeats" target="_blank" rel="noopener noreferrer"><img src={youtubeIcon} alt="YouTube" /></a>
+                <a href="https://www.instagram.com/justmalikbeats/" target="_blank" rel="noopener noreferrer"><img src={instaIcon} alt="Instagram" /></a>
               </div>
             </div>
           </aside>

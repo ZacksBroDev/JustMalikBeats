@@ -4,6 +4,9 @@ import { useBlog } from '../../context/BlogContext';
 import { blogCategories } from './blogData';
 import './Blog.css';
 import css from '/src/assets/css/style.module.css';
+import spotifyIcon from '/src/assets/icons/spotify.png';
+import youtubeIcon from '/src/assets/icons/youtube.png';
+import instaIcon from '/src/assets/icons/insta.png';
 
 function Blog() {
   const { blogPosts } = useBlog();
@@ -97,9 +100,9 @@ function Blog() {
           <div className={css.sidebarWidget}>
             <h3>Follow Me</h3>
             <div className={css.socialLinks}>
-              <a href="https://open.spotify.com/artist/31qEeNT1N54KjOMpPh3OmA" target="_blank" rel="noopener noreferrer"><img src="/src/assets/icons/spotify.png" alt="Spotify" /></a>
-              <a href="https://www.youtube.com/@JustMalikBeats" target="_blank" rel="noopener noreferrer"><img src="/src/assets/icons/youtube.png" alt="YouTube" /></a>
-              <a href="https://www.instagram.com/justmalikbeats/" target="_blank" rel="noopener noreferrer"><img src="/src/assets/icons/insta.png" alt="Instagram" /></a>
+              <a href="https://open.spotify.com/artist/31qEeNT1N54KjOMpPh3OmA" target="_blank" rel="noopener noreferrer"><img src={spotifyIcon} alt="Spotify" /></a>
+              <a href="https://www.youtube.com/@JustMalikBeats" target="_blank" rel="noopener noreferrer"><img src={youtubeIcon} alt="YouTube" /></a>
+              <a href="https://www.instagram.com/justmalikbeats/" target="_blank" rel="noopener noreferrer"><img src={instaIcon} alt="Instagram" /></a>
             </div>
           </div>
         </aside>
