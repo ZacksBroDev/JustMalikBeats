@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useBlog } from '../../context/BlogContext';
 import { useAuth } from '../../context/AuthContext';
 import './BlogAdmin.css';
+import malikLogo from '/src/assets/icons/MALIKBEATSLOGO.jpg';
 
 const BlogAdmin = () => {
   const { blogPosts, deleteBlogPost } = useBlog();
@@ -20,7 +21,7 @@ const BlogAdmin = () => {
     <div className="admin-container">
       <header className="admin-header">
         <div className="logo">
-            <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats-Logo" />
+            <img src={malikLogo} alt="JustMalikBeats-Logo" />
             <h1>JustMalikBeats</h1>
         </div>
         

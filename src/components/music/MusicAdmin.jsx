@@ -3,6 +3,7 @@ import { useMusic } from '../../context/MusicContext';
 import { useAuth } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import './MusicAdmin.css';
+import malikLogo from '/src/assets/icons/MALIKBEATSLOGO.jpg';
 
 const MusicAdmin = () => {
   const { musicCatalog, purchases } = useMusic();
@@ -17,7 +18,7 @@ const MusicAdmin = () => {
       <header className="admin-header">
         <div className="logo">
           <Link to="/">
-            <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats-Logo" />
+            <img src={malikLogo} alt="JustMalikBeats-Logo" />
             <h1>Music Admin</h1>
           </Link>
         </div>

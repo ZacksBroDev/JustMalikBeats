@@ -103,7 +103,7 @@ function BlogPost() {
 
         <aside className="blog-post-sidebar">
           <div className="author-card">
-            <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats" className="author-image" />
+            <img src={malikLogo} alt="JustMalikBeats" className="author-image" />
             <div className="author-info">
               <h3>JustMalikBeats</h3>
               <p>Music Producer from Denver, creating beats that capture the essence of the Mile High City's vibrant music scene.</p>

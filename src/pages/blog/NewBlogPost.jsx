@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useBlog } from '../../context/BlogContext';
 import { useAuth } from '../../context/AuthContext';
 import './NewBlogPost.css';
+import malikLogo from '/src/assets/icons/MALIKBEATSLOGO.jpg';
 
 const NewBlogPost = () => {
   const navigate = useNavigate();
@@ -112,7 +113,7 @@ const NewBlogPost = () => {
       <header className="blog-header">
         <div className="logo">
           <Link to="/">
-            <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats-Logo" />
+            <img src={malikLogo} alt="JustMalikBeats-Logo" />
             <h1>JustMalikBeats</h1>
           </Link>
         </div>

@@ -4,6 +4,7 @@ import { useBlog } from '../../context/BlogContext';
 import { blogCategories } from './blogData';
 import './Blog.css';
 import css from '/src/assets/css/style.module.css';
+import malikLogo from '/src/assets/icons/MALIKBEATSLOGO.jpg';
 import spotifyIcon from '/src/assets/icons/spotify.png';
 import youtubeIcon from '/src/assets/icons/youtube.png';
 import instaIcon from '/src/assets/icons/insta.png';
@@ -80,7 +81,7 @@ function Blog() {
           <div className={css.sidebarWidget}>
             <h3>About Me</h3>
             <div className={css.aboutWidget}>
-              <img src="/src/assets/icons/MALIKBEATSLOGO.jpg" alt="JustMalikBeats" className={css.authorAvatar} />
+              <img src={malikLogo} alt="JustMalikBeats" className={css.authorAvatar} />
               <p>Music Producer from Denver, creating beats that capture the essence of the Mile High City's vibrant music scene.</p>
             </div>
           </div>

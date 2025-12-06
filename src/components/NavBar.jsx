@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import './NavBar.css';
+import malikLogo from '../assets/icons/MALIKBEATSLOGO.jpg';
 
 const NavBar = () => {
   const { currentUser, isLoggedIn, openLoginModal, logout } = useUser();
@@ -20,7 +21,7 @@ const NavBar = () => {
       <div className="logo">
         <Link to="/" onClick={closeMobileMenu}>
           <img
-            src="src/assets/icons/MALIKBEATSLOGO.jpg"
+            src={malikLogo}
             alt="JustMalikBeats-Logo"
           />
           <h1>JustMalikBeats</h1>
