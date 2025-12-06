@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = (password) => {
     // Simple password check - in production, use proper authentication
-    const adminPassword = "malik2025beats"; // Change this to your desired password
+    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || "malik2025beats";
 
     if (password === adminPassword) {
       setIsAuthenticated(true);
