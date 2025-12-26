@@ -4,19 +4,22 @@ A production-ready React + Express platform for music producer JustMalikBeats fe
 
 ## ⚡ TL;DR
 
-**🔗 Live Demo:** *(Coming Soon)*
+**🔗 Live Demo:** https://main.d2l99u51v53uvg.amplifyapp.com/
 
 **🎯 Key Features:**
+
 - 🎵 Stripe-powered music marketplace with secure downloads
 - 👤 JWT authentication with role-based admin panel
 - 📧 Automated email notifications & purchase tracking
 
 **🔒 Security Controls:**
+
 - Bcrypt password hashing + JWT tokens with rate limiting
 - Helmet CSP, NoSQL injection protection, input validation
 - Stripe webhook signatures with environment-based secrets
 
 **⚡ Quick Start:**
+
 ```bash
 npm install && npm run dev:full
 # Backend: localhost:3001 | Frontend: localhost:5173
@@ -27,6 +30,7 @@ npm install && npm run dev:full
 ## 🚀 Features
 
 ### Core Functionality
+
 - 🎵 **Music Catalog** - Browse and purchase beats with complete Stripe integration
 - 👤 **User Accounts** - JWT authentication with bcrypt password hashing
 - 💳 **Secure Payments** - Stripe payment processing with webhook verification
@@ -36,6 +40,7 @@ npm install && npm run dev:full
 - 🔐 **Admin Panel** - Protected routes for content and track management
 
 ### Backend Infrastructure
+
 - 🗄️ **MongoDB Database** - Persistent data storage with Mongoose ODM
 - 🔑 **JWT Authentication** - Secure token-based auth with role-based access
 - 🛡️ **Enterprise Security** - Helmet, rate limiting, input validation, NoSQL injection protection
@@ -46,7 +51,8 @@ npm install && npm run dev:full
 ## 📋 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - MongoDB (local or Atlas)
 - Stripe account
 
@@ -67,6 +73,7 @@ nano .env
 ```
 
 **Required environment variables:**
+
 ```env
 NODE_ENV=development
 MONGODB_URI=mongodb://localhost:27017/justmalikbeats
@@ -94,6 +101,7 @@ sudo systemctl start mongodb
 ### 4. Run the Application
 
 #### Option 1: Run Frontend + Backend Together
+
 ```bash
 npm run dev:full
 ```
@@ -106,6 +114,7 @@ npm run dev       # Frontend on port 5173
 ```
 
 ### 5. Access Application
+
 - **Frontend:** http://localhost:5173
 - **Backend API:** http://localhost:3001
 - **Health Check:** http://localhost:3001/api/health
@@ -121,12 +130,14 @@ npm run dev       # Frontend on port 5173
 ## 🏗️ Architecture
 
 ### Frontend (React + Vite)
+
 - Modern React 19 with functional components
 - Mobile-responsive design with hamburger menu
 - Stripe Elements integration
 - Context API for state management
 
 ### Backend (Express + MongoDB)
+
 ```
 Express Server (port 3001)
 ├── Authentication (JWT + bcrypt)
@@ -138,6 +149,7 @@ Express Server (port 3001)
 ```
 
 ### Database Schema
+
 - **Users:** Email, password (hashed), role, purchases
 - **Tracks:** Title, artist, price, Stripe IDs, metadata (BPM, key, tags)
 - **Purchases:** User, track, payment details, download tokens
@@ -156,12 +168,14 @@ Express Server (port 3001)
 ## 📡 API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - User login
 - `POST /api/auth/admin-login` - Admin authentication
 - `GET /api/auth/me` - Get current user
 
 ### Tracks
+
 - `GET /api/tracks` - List all tracks (filterable)
 - `GET /api/tracks/:id` - Get single track
 - `POST /api/tracks` - Create track (admin)
@@ -169,6 +183,7 @@ Express Server (port 3001)
 - `DELETE /api/tracks/:id` - Delete track (admin)
 
 ### Payments
+
 - `POST /api/payments/create-intent` - Create payment
 - `POST /api/payments/webhook` - Stripe webhook
 - `GET /api/payments/download/:token` - Download track
@@ -179,11 +194,13 @@ See [API_DOCUMENTATION.md](API_DOCUMENTATION.md) for details.
 ## 🧪 Testing
 
 ### Health Check
+
 ```bash
 curl http://localhost:3001/api/health
 ```
 
 ### Register User
+
 ```bash
 curl -X POST http://localhost:3001/api/auth/register \
   -H "Content-Type: application/json" \
@@ -191,6 +208,7 @@ curl -X POST http://localhost:3001/api/auth/register \
 ```
 
 ### Login
+
 ```bash
 curl -X POST http://localhost:3001/api/auth/login \
   -H "Content-Type: application/json" \
@@ -202,18 +220,20 @@ curl -X POST http://localhost:3001/api/auth/login \
 ### Before Deploying
 
 1. **Run production readiness check:**
+
 ```bash
 bash check-production-ready.sh
 ```
 
 2. **Clean git history:**
+
 ```bash
 bash remove-env-from-git.sh
 ```
 
 3. **Set up production environment:**
    - MongoDB Atlas or production database
-   - Stripe live API keys (sk_live_ and pk_live_)
+   - Stripe live API keys (sk*live* and pk*live*)
    - Strong JWT secret (64+ characters)
    - Secure admin password
    - SMTP email service
@@ -221,12 +241,14 @@ bash remove-env-from-git.sh
 ### Deployment Options
 
 **VPS (Recommended):**
+
 - PM2 process manager
 - Nginx reverse proxy
 - SSL with Certbot
 - See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
 
 **PaaS (Easy):**
+
 - Heroku
 - Railway
 - Render
@@ -235,6 +257,7 @@ bash remove-env-from-git.sh
 ## 📦 Tech Stack
 
 ### Frontend
+
 - React 19.1.0
 - Vite 6.3.5
 - React Router 6.30.1
@@ -242,6 +265,7 @@ bash remove-env-from-git.sh
 - Context API
 
 ### Backend
+
 - Express 5.1.0
 - MongoDB + Mongoose 9.0.1
 - Stripe 18.2.1
@@ -250,6 +274,7 @@ bash remove-env-from-git.sh
 - Nodemailer (email)
 
 ### Security
+
 - Helmet
 - express-rate-limit
 - express-mongo-sanitize
@@ -302,11 +327,12 @@ npm run start        # Production server
 ## 🔍 Monitoring
 
 ### Logs
+
 ```bash
 # View all logs
 tail -f logs/combined.log
 
-# View errors only  
+# View errors only
 tail -f logs/error.log
 
 # With PM2 (production)
@@ -314,6 +340,7 @@ pm2 logs justmalik-api
 ```
 
 ### Database
+
 ```bash
 # Connect to MongoDB
 mongosh justmalikbeats
@@ -343,6 +370,7 @@ All rights reserved. This project is proprietary software for JustMalikBeats.
 ## 🆘 Troubleshooting
 
 ### MongoDB Connection Failed
+
 ```bash
 # Start MongoDB locally
 brew services start mongodb-community   # macOS
@@ -353,12 +381,14 @@ MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/justmalikbeats
 ```
 
 ### Port Already in Use
+
 ```bash
 # Kill process on port 3001
 kill $(lsof -t -i:3001)
 ```
 
 ### Stripe Payments Not Working
+
 - Verify STRIPE_SECRET_KEY in .env
 - Check Stripe dashboard for errors
 - Ensure webhook secret configured for production
