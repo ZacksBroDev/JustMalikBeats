@@ -2,6 +2,28 @@
 
 A production-ready React + Express platform for music producer JustMalikBeats featuring secure authentication, payment processing, and content management.
 
+## ⚡ TL;DR
+
+**🔗 Live Demo:** *(Coming Soon)*
+
+**🎯 Key Features:**
+- 🎵 Stripe-powered music marketplace with secure downloads
+- 👤 JWT authentication with role-based admin panel
+- 📧 Automated email notifications & purchase tracking
+
+**🔒 Security Controls:**
+- Bcrypt password hashing + JWT tokens with rate limiting
+- Helmet CSP, NoSQL injection protection, input validation
+- Stripe webhook signatures with environment-based secrets
+
+**⚡ Quick Start:**
+```bash
+npm install && npm run dev:full
+# Backend: localhost:3001 | Frontend: localhost:5173
+```
+
+---
+
 ## 🚀 Features
 
 ### Core Functionality
