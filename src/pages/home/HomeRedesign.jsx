@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useMusic } from '../../context/MusicContext';
-import { useUser } from '../../context/UserContext';
 import Button from '../../components/atoms/Button';
 import TrackCard from '../../components/molecules/TrackCard';
+import { heroImages, ctaImages } from '../../assets/images/imageAssets';
 import './HomeRedesign.css';
 
 const HomeRedesign = () => {
   const { musicCatalog, addToCart, cart } = useMusic();
-  const { openLoginModal } = useUser();
 
   const featuredTracks = musicCatalog.slice(0, 3);
 
@@ -24,7 +23,15 @@ const HomeRedesign = () => {
     <div className="home">
       {/* Hero Section */}
       <section className="hero">
-        <div className="hero__background"></div>
+        <div className="hero__background" aria-hidden="true">
+          <img
+            src={heroImages.studio}
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </div>
         <div className="hero__content">
           <h1 className="hero__title">
             Beats Built in Denver.
@@ -121,7 +128,14 @@ const HomeRedesign = () => {
                 <Button variant="primary" size="lg">Get in Touch</Button>
               </a>
             </div>
-            <div className="custom-cta__visual"></div>
+            <div className="custom-cta__visual">
+              <img
+                src={ctaImages.customBeat}
+                alt="Custom beat concept visual with mountain landscape and production gear"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
       </section>

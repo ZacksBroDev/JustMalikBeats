@@ -51,10 +51,23 @@
 .hero__background {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
-  opacity: 0.4;
+}
+
+.hero__background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hero__background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.75) 100%),
+    radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.22) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 50%);
 }
 
 .hero__content {
@@ -191,10 +204,27 @@
 }
 
 .custom-cta__visual {
+  position: relative;
   min-height: 400px;
-  background: linear-gradient(135deg, var(--graphite) 0%, var(--charcoal) 100%);
+  overflow: hidden;
   border-radius: var(--radius-lg);
   border: 1px solid var(--slate);
+}
+
+.custom-cta__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.custom-cta__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.45) 100%);
+  pointer-events: none;
 }
 
 /* Responsive */
