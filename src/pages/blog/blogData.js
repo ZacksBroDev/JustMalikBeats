@@ -1,3 +1,5 @@
+import { blogImages } from '../../assets/images/imageAssets';
+
 // Blog post data for JustMalikBeats
 export const blogPosts = [
   {
@@ -8,7 +10,12 @@ export const blogPosts = [
     date: "2025-06-20",
     category: "Production",
     author: "JustMalikBeats",
-    image: "/src/assets/icons/294698_beats_icon.png",
+    image: blogImages.featuredProductionHero,
+    imageAlt: 'Music producer beat-making workstation with waveform overlays and controller pads',
+    imagePosition: 'center 38%',
+    featuredImage: blogImages.featuredProductionHero,
+    featuredImageAlt: 'Featured production article hero showing a premium beat-production desk with waveform visualizations',
+    featuredImagePosition: 'center 38%',
     content: `
       <p>Creating music is more than just laying down tracks—it's about capturing emotion and telling a story through sound. In my latest beat pack, I wanted to showcase the vibrant energy of Denver's underground music scene while staying true to my signature style.</p>
       
@@ -38,8 +45,9 @@ export const blogPosts = [
     date: "2025-06-15",
     category: "Education",
     author: "JustMalikBeats",
-    image:
-      "/src/assets/icons/3298138_boombox_music_stereo_tape player_icon.svg",
+    image: blogImages.educationThumbnail,
+    imageAlt: 'Education thumbnail showing a focused producer workflow with notes and studio controls',
+    imagePosition: 'center 42%',
     content: `
       <p>Starting out as a music producer can feel overwhelming with all the tools, techniques, and industry knowledge you need to learn. Here are five essential tips that have helped shape my journey as JustMalikBeats.</p>
       
@@ -70,7 +78,9 @@ export const blogPosts = [
     date: "2025-06-10",
     category: "Music Scene",
     author: "JustMalikBeats",
-    image: "/src/assets/icons/MALIKBEATSLOGO.jpg",
+    image: blogImages.musicSceneThumbnail,
+    imageAlt: 'Music scene thumbnail with Denver-inspired nightlife atmosphere and audio wave visuals',
+    imagePosition: 'center 45%',
     content: `
       <p>Denver's music scene is unlike anywhere else I've experienced. From the basement shows in RiNo to the packed venues on South Broadway, this city pulses with creative energy that directly influences my work as a producer.</p>
       

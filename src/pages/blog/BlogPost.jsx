@@ -41,7 +41,7 @@ function BlogPost() {
 
       <div className="blog-post-hero">
         <div className="hero-image">
-          <img src={post.image} alt={post.title} />
+          <img src={post.image} alt={post.imageAlt || post.title} />
         </div>
         <div className="hero-overlay">
           <div className="hero-content">
@@ -127,7 +127,7 @@ function BlogPost() {
               {relatedPosts.map(relatedPost => (
                 <div key={relatedPost.id} className="related-post">
                   <Link to={`/blog/${relatedPost.id}`}>
-                    <img src={relatedPost.image} alt={relatedPost.title} />
+                    <img src={relatedPost.image} alt={relatedPost.imageAlt || relatedPost.title} />
                     <div className="related-post-content">
                       <h4>{relatedPost.title}</h4>
                       <span className="related-post-date">
