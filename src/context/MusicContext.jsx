@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+import { beatImages } from '../assets/images/imageAssets';
 
 const MusicContext = createContext();
 
@@ -19,7 +20,9 @@ const musicCatalog = [
     price: 2.99,
     priceId: "price_1234567890", // Stripe Price ID
     audioPreview: "/audio/previews/denver-nights-preview.mp3",
-    coverImage: "/294698_beats_icon.png",
+    coverImage: beatImages.denverNights,
+    coverAlt: 'Denver Nights beat cover showing a neon-lit city street at night',
+    coverPosition: 'center center',
     genre: "Hip-Hop",
     duration: "3:24",
     description: "A smooth hip-hop beat inspired by Denver's nightlife."
@@ -31,7 +34,9 @@ const musicCatalog = [
     price: 3.99,
     priceId: "price_0987654321",
     audioPreview: "/audio/previews/mountain-high-preview.mp3",
-    coverImage: "/294698_beats_icon.png",
+    coverImage: beatImages.mountainHigh,
+    coverAlt: 'Mountain High beat cover showing moonlit alpine peaks and a frozen lake',
+    coverPosition: 'center center',
     genre: "Trap",
     duration: "2:56",
     description: "High-energy trap beat with Colorado mountain vibes."
@@ -43,7 +48,9 @@ const musicCatalog = [
     price: 4.99,
     priceId: "price_1122334455",
     audioPreview: "/audio/previews/studio-sessions-preview.mp3",
-    coverImage: "/294698_beats_icon.png",
+    coverImage: beatImages.studioSessions,
+    coverAlt: 'Studio Sessions beat cover showing modern production hardware on a studio desk',
+    coverPosition: 'center center',
     genre: "R&B",
     duration: "4:12",
     description: "Smooth R&B instrumental perfect for late-night sessions."

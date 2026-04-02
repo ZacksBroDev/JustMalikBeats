@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../atoms/Button';
 import Card from '../atoms/Card';
+import { beatImages } from '../../assets/images/imageAssets';
 import './TrackCard.css';
 
 const TrackCard = ({ 
@@ -26,8 +27,11 @@ const TrackCard = ({
     <Card className="track-card">
       <div className="track-card__image">
         <img 
-          src={imageError ? '/placeholder-cover.jpg' : track.coverImage}
-          alt={track.title}
+          src={imageError ? beatImages.denverNights : track.coverImage}
+          alt={track.coverAlt || `${track.title} beat cover art`}
+          loading="lazy"
+          decoding="async"
+          style={{ objectPosition: track.coverPosition || 'center center' }}
           onError={() => setImageError(true)}
         />
         <div className="track-card__overlay">

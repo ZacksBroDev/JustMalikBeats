@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../atoms/Card';
+import { blogImages } from '../../assets/images/imageAssets';
 import './ArticleCard.css';
 
 const ArticleCard = ({ article, featured = false }) => {
@@ -19,8 +20,11 @@ const ArticleCard = ({ article, featured = false }) => {
       <article className={`article-card ${featured ? 'article-card--featured' : ''}`}>
         <div className="article-card__image">
           <img 
-            src={article.image || '/api/placeholder/800/450'} 
-            alt={article.title}
+            src={article.image || blogImages.production}
+            alt={article.imageAlt || article.title}
+            loading="lazy"
+            decoding="async"
+            style={{ objectPosition: article.imagePosition || 'center center' }}
           />
           <div className="article-card__category">{article.category}</div>
         </div>
