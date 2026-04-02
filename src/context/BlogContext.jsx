@@ -14,13 +14,34 @@ export const useBlog = () => {
 export const BlogProvider = ({ children }) => {
   const [blogPosts, setBlogPosts] = useState([]);
 
+  // Build a lookup of authoritative image fields from the source data so
+  // stale localStorage values (e.g. old icon paths) never override them.
+  const imageFieldsByPost = Object.fromEntries(
+    initialBlogPosts.map(p => [p.id, {
+      image: p.image,
+      imageAlt: p.imageAlt,
+      imagePosition: p.imagePosition,
+      ...(p.featuredImage && {
+        featuredImage: p.featuredImage,
+        featuredImageAlt: p.featuredImageAlt,
+        featuredImagePosition: p.featuredImagePosition,
+      }),
+    }])
+  );
+
   // Load blog posts from localStorage on component mount
   useEffect(() => {
     const savedPosts = localStorage.getItem('justmalikbeats_blog_posts');
     if (savedPosts) {
       try {
         const parsedPosts = JSON.parse(savedPosts);
-        setBlogPosts(parsedPosts);
+        // Re-apply authoritative image data from source for built-in posts
+        const merged = parsedPosts.map(post =>
+          imageFieldsByPost[post.id]
+            ? { ...post, ...imageFieldsByPost[post.id] }
+            : post
+        );
+        setBlogPosts(merged);
       } catch (error) {
         console.error('Error parsing saved blog posts:', error);
         setBlogPosts(initialBlogPosts);
