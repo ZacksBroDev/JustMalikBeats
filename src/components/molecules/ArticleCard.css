@@ -42,10 +42,10 @@
 }
 
 .article-card__content {
-  padding: var(--space-5) 0 0;
+  padding: var(--space-5);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: 0;
   flex: 1;
 }
 
@@ -56,6 +56,7 @@
   font-size: var(--text-sm);
   color: var(--text-secondary);
   font-family: var(--font-mono);
+  margin-bottom: var(--space-3);
 }
 
 .article-card__divider {
@@ -67,7 +68,7 @@
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   line-height: 1.3;
-  margin: 0;
+  margin: 0 0 var(--space-3);
 }
 
 .article-card--featured .article-card__title {
@@ -83,8 +84,7 @@
 }
 
 .article-card__footer {
-  margin-top: auto;
-  padding-top: var(--space-3);
+  margin-top: var(--space-4);
 }
 
 .article-card__read-more {
