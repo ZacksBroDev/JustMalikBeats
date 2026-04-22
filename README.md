@@ -1,24 +1,44 @@
-# JustMalikBeats - Professional Music Producer Platform
+# JustMalikBeats - Music Producer Platform
 
-A production-ready React + Express platform for music producer JustMalikBeats featuring secure authentication, payment processing, and content management.
+JustMalikBeats is a full-stack React + Express platform for selling beats, managing customer purchases, and running day-to-day content updates from a protected admin area.
 
-## ⚡ TL;DR
+It is built for real production use with Stripe payments, secure downloads, account authentication, and clear deployment documentation.
 
-**🔗 Live Demo:** https://main.d2l99u51v53uvg.amplifyapp.com/
+## Screenshots
 
-**🎯 Key Features:**
+<p align="center">
+  <img src="./docs/imgs/hero.png" alt="Hero" width="85%" />
+</p>
 
-- 🎵 Stripe-powered music marketplace with secure downloads
-- 👤 JWT authentication with role-based admin panel
-- 📧 Automated email notifications & purchase tracking
+<p align="center">
+  <img src="./docs/imgs/mobile.png" alt="Mobile Layout" width="320" />
+</p>
 
-**🔒 Security Controls:**
+<p align="center">
+  <img src="./docs/imgs/blog.png" alt="Blog Layout" width="85%" />
+</p>
 
-- Bcrypt password hashing + JWT tokens with rate limiting
-- Helmet CSP, NoSQL injection protection, input validation
+<p align="center">
+  <img src="./docs/imgs/profile.png" alt="Profile Layout" width="85%" />
+</p>
+
+## TL;DR
+
+**Live Demo:** https://malikbeats.com/
+
+**Highlights:**
+
+- Stripe-powered music marketplace with secure downloads
+- JWT authentication with a role-based admin panel
+- Automated email notifications and purchase tracking
+
+**Security Controls:**
+
+- Bcrypt password hashing with JWT authentication and rate limiting
+- Helmet CSP, NoSQL injection protection, and input validation
 - Stripe webhook signatures with environment-based secrets
 
-**⚡ Quick Start:**
+**Quick Start:**
 
 ```bash
 npm install && npm run dev:full
@@ -27,28 +47,28 @@ npm install && npm run dev:full
 
 ---
 
-## 🚀 Features
+## Features
 
 ### Core Functionality
 
-- 🎵 **Music Catalog** - Browse and purchase beats with complete Stripe integration
-- 👤 **User Accounts** - JWT authentication with bcrypt password hashing
-- 💳 **Secure Payments** - Stripe payment processing with webhook verification
-- 📥 **Download Management** - Token-based downloads with limits (3 per purchase, 30-day expiry)
-- 📧 **Email Notifications** - Automated purchase confirmations with beautiful HTML templates
-- 📝 **Blog System** - Content management with admin authentication
-- 🔐 **Admin Panel** - Protected routes for content and track management
+- **Music Catalog** - Browse and purchase beats with complete Stripe integration
+- **User Accounts** - JWT authentication with bcrypt password hashing
+- **Secure Payments** - Stripe payment processing with webhook verification
+- **Download Management** - Token-based downloads with limits (3 per purchase, 30-day expiry)
+- **Email Notifications** - Automated purchase confirmations with HTML templates
+- **Blog System** - Content management with admin authentication
+- **Admin Panel** - Protected routes for content and track management
 
 ### Backend Infrastructure
 
-- 🗄️ **MongoDB Database** - Persistent data storage with Mongoose ODM
-- 🔑 **JWT Authentication** - Secure token-based auth with role-based access
-- 🛡️ **Enterprise Security** - Helmet, rate limiting, input validation, NoSQL injection protection
-- 📊 **Winston Logging** - File and console logging with error tracking
-- 🌐 **RESTful API** - 15+ endpoints with comprehensive documentation
-- ⚡ **Production-Ready** - Environment-based configuration with PM2 support
+- **MongoDB Database** - Persistent data storage with Mongoose ODM
+- **JWT Authentication** - Secure token-based auth with role-based access
+- **Security** - Helmet, rate limiting, input validation, NoSQL injection protection
+- **Winston Logging** - File and console logging with error tracking
+- **RESTful API** - 15+ endpoints with documentation
+- **Production Setup** - Environment-based configuration with PM2 support
 
-## 📋 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -119,7 +139,7 @@ npm run dev       # Frontend on port 5173
 - **Backend API:** http://localhost:3001
 - **Health Check:** http://localhost:3001/api/health
 
-## 📚 Documentation
+## Documentation
 
 - **[Quick Start Guide](QUICK_START.md)** - Get up and running fast
 - **[API Documentation](API_DOCUMENTATION.md)** - Complete API reference
@@ -127,7 +147,7 @@ npm run dev       # Frontend on port 5173
 - **[Implementation Summary](IMPLEMENTATION_SUMMARY.md)** - What was built
 - **[Before/After Comparison](BEFORE_AFTER.md)** - Transformation overview
 
-## 🏗️ Architecture
+## Architecture
 
 ### Frontend (React + Vite)
 
@@ -154,7 +174,7 @@ Express Server (port 3001)
 - **Tracks:** Title, artist, price, Stripe IDs, metadata (BPM, key, tags)
 - **Purchases:** User, track, payment details, download tokens
 
-## 🔐 Security Features
+## Security Features
 
 - ✅ JWT authentication with bcrypt password hashing
 - ✅ Environment-based configuration (no hardcoded secrets)
@@ -165,7 +185,7 @@ Express Server (port 3001)
 - ✅ CORS with origin whitelist
 - ✅ Production/development mode detection
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Authentication
 
@@ -191,7 +211,7 @@ Express Server (port 3001)
 
 See [API_DOCUMENTATION.md](API_DOCUMENTATION.md) for details.
 
-## 🧪 Testing
+## Testing
 
 ### Health Check
 
@@ -215,7 +235,7 @@ curl -X POST http://localhost:3001/api/auth/login \
   -d '{"email":"test@test.com","password":"Test123!"}'
 ```
 
-## 🚀 Production Deployment
+## Production Deployment
 
 ### Before Deploying
 
@@ -254,7 +274,7 @@ bash remove-env-from-git.sh
 - Render
 - Vercel (frontend) + Backend separately
 
-## 📦 Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -280,7 +300,7 @@ bash remove-env-from-git.sh
 - express-mongo-sanitize
 - express-validator
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 JustMalikBeats/
@@ -312,7 +332,7 @@ JustMalikBeats/
     └── error.log
 ```
 
-## 🛠️ Development Scripts
+## Development Scripts
 
 ```bash
 npm run dev          # Frontend dev server
@@ -324,7 +344,7 @@ npm run server:prod  # Backend (production mode)
 npm run start        # Production server
 ```
 
-## 🔍 Monitoring
+## Monitoring
 
 ### Logs
 
@@ -351,15 +371,15 @@ db.tracks.find()
 db.purchases.find()
 ```
 
-## 🤝 Contributing
+## Contributing
 
 This is a private project for JustMalikBeats. For issues or questions, contact the development team.
 
-## 📄 License
+## License
 
 All rights reserved. This project is proprietary software for JustMalikBeats.
 
-## ⚠️ Important Notes
+## Important Notes
 
 - **Security:** Never commit `.env` file to git
 - **Passwords:** Change default admin password before production
@@ -367,7 +387,7 @@ All rights reserved. This project is proprietary software for JustMalikBeats.
 - **Database:** Back up MongoDB regularly in production
 - **Email:** Configure SMTP before enabling email notifications
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### MongoDB Connection Failed
 
@@ -397,18 +417,16 @@ See [QUICK_START.md](QUICK_START.md) for more troubleshooting.
 
 ---
 
-**Built with ❤️ for JustMalikBeats**
+Built for JustMalikBeats.
 
 The payment system includes:
 
 1. **Frontend Components**:
-
    - `MusicCatalog.jsx` - Music browsing and cart
    - `CheckoutForm.jsx` - Stripe payment form
    - `MusicContext.jsx` - State management
 
 2. **Backend Server** (`server.js`):
-
    - Payment intent creation
    - Payment confirmation
    - Download link generation
