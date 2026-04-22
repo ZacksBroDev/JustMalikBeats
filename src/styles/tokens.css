@@ -49,6 +49,9 @@
 
   /* Font Families */
   --font-base: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-base);
+  --font-body: var(--font-base);
+  --font-display: var(--font-base);
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
   /* Font Sizes */
@@ -59,13 +62,16 @@
   --text-h4: 1.25rem;
   --text-body-lg: 1.125rem;
   --text-body: 1rem;
+  --text-base: var(--text-body);
   --text-sm: 0.875rem;
   --text-xs: 0.75rem;
 
   /* Font Weights */
   --weight-regular: 400;
+  --font-normal: var(--weight-regular);
   --weight-medium: 500;
   --weight-semibold: 600;
+  --font-semibold: var(--weight-semibold);
   --weight-bold: 700;
 
   /* Line Heights */
@@ -116,11 +122,9 @@
 
   /* Border Radius */
   --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
+  --radius-xl: 6px;
   --radius-full: 9999px;
 
   /* ========================================
@@ -139,101 +143,112 @@
   --duration-fast: 150ms;
   --duration-base: 250ms;
   --duration-slow: 350ms;
-  --ease: cubic-bezier(0.4, 0, 0.2========================================*/ --z-base: 0;
-      --z-dropdown: 1000;
-      --z-sticky: 1100;
-      --z-modal-backdrop: 1200;
-      --z-modal: 1300;
-      --z-toast: 1400;
-  }
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ========================================
+     Z-INDEX
+     ======================================== */
+
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-modal-backdrop: 1200;
+  --z-modal: 1300;
+  --z-toast: 1400;
+}
+
+/* ========================================
    GLOBAL BASE STYLES
    ======================================== */
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  html {
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-  }
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
 
-  body {
-    font-family: var(--font-body);
-    font-size: var(--text-base);
-    font-weight: var(--font-normal);
-    line-height: var(--leading-normal);
-    color: var(--text-primary);
-    background-color: var(--carbon);
-    overflow-x: hidden;
-  }
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+  background-color: var(--carbon);
+  overflow-x: hidden;
+}
 
-  /* ========================================
+/* ========================================
    TYPOGRAPHY UTILITIES
    ======================================== */
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    font-weight: var(--font-semibold);
-    line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-tight);
-    color: var(--text-primary);
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
 
-  h1 {
-    font-size: var(--text-h1);
-  }
+h1 {
+  font-size: var(--text-h1);
+}
 
-  h2 {
-    font-size: var(--text-h2);
-  }
+h2 {
+  font-size: var(--text-h2);
+}
 
-  h3 {
-    font-size: var(--text-h3);
-  }
+h3 {
+  font-size: var(--text-h3);
+}
 
-  h4 {
-    font-size: var(--text-h4);
-  }
+h4 {
+  font-size: var(--text-h4);
+}
 
-  /* ========================================
+/* ========================================
    UTILITY CLASSES
    ======================================== */
 
-  .container {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--space-6);
-    padding-right: var(--space-6);
-  }
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
 
+.section-spacing {
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
+}
+
+@media (max-width: 768px) {
   .section-spacing {
-    padding-top: var(--space-20);
-    padding-bottom: var(--space-20);
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
   }
+}
 
-  @media (max-width: 768px) {
-    .section-spacing {
-      padding-top: var(--space-12);
-      padding-bottom: var(--space-12);
-    }
-  }
-
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
