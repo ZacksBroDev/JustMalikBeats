@@ -1,5 +1,13 @@
 /* Global App Styles */
 
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 /* Reset box-sizing */
 *,
 *::before,
@@ -15,6 +23,7 @@ body {
   color: var(--text-primary);
   line-height: 1.5;
   margin: 0;
+  padding: 0;
   background: var(--carbon);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
