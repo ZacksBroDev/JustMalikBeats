@@ -142,6 +142,30 @@
   margin: 0;
 }
 
+.catalog__status {
+  text-align: center;
+  padding: var(--space-16) var(--space-5);
+  border: 1px solid var(--slate);
+  background: var(--graphite);
+  border-radius: var(--radius-md);
+}
+
+.catalog__status h2 {
+  font-size: var(--text-h2);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.catalog__status p {
+  color: var(--text-secondary);
+  margin: 0 auto var(--space-5);
+  max-width: 48rem;
+}
+
+.catalog__status--error {
+  border-color: var(--error);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .catalog__header-content {

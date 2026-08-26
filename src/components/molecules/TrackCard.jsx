@@ -8,14 +8,20 @@ const TrackCard = ({
   track, 
   onAddToCart, 
   onPreview,
+  previewMessage = null,
   isPreviewing = false,
   isInCart = false 
 }) => {
   const [imageError, setImageError] = useState(false);
+  const hasPreview = typeof track.audioPreview === 'string' && track.audioPreview.trim().length > 0;
 
   const handlePreview = (e) => {
     e.stopPropagation();
-    onPreview(track.id);
+    if (!hasPreview || typeof onPreview !== 'function') {
+      return;
+    }
+
+    onPreview(track);
   };
 
   const handleAddToCart = (e) => {
@@ -38,7 +44,8 @@ const TrackCard = ({
           <button 
             className="track-card__play"
             onClick={handlePreview}
-            aria-label={`Preview ${track.title}`}
+            aria-label={hasPreview ? `Preview ${track.title}` : `${track.title} preview unavailable`}
+            disabled={!hasPreview}
           >
             {isPreviewing ? (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -68,6 +75,13 @@ const TrackCard = ({
             </>
           )}
         </div>
+
+        {!hasPreview && (
+          <p className="track-card__preview-message" role="status">Preview unavailable</p>
+        )}
+        {hasPreview && previewMessage && (
+          <p className="track-card__preview-message" role="status">{previewMessage}</p>
+        )}
         
         <div className="track-card__footer">
           <span className="track-card__price">${track.price}</span>

@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { BlogProvider } from "./context/BlogContext";
-import { AuthProvider } from "./context/AuthContext";
 import { MusicProvider } from "./context/MusicContext";
 import { UserProvider } from "./context/UserContext";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -12,6 +11,8 @@ import BlogPost from "./pages/blog/BlogPost";
 import NewBlogPost from "./pages/blog/NewBlogPost";
 import CatalogRedesign from "./pages/catalog/CatalogRedesign";
 import AccountDashboard from "./pages/account/AccountDashboard";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
+import PaymentSuccess from "./components/music/PaymentSuccess";
 import UnifiedAdmin from "./components/admin/UnifiedAdmin";
 import NavbarRedesign from "./components/organisms/NavbarRedesign";
 import FooterRedesign from "./components/organisms/FooterRedesign";
@@ -23,9 +24,8 @@ function App() {
     <Suspense fallback={<div>Loading...</div>}>
       <Elements stripe={stripePromise}>
         <UserProvider>
-          <AuthProvider>
-            <BlogProvider>
-              <MusicProvider>
+          <BlogProvider>
+            <MusicProvider>
                 <NavbarRedesign />
                 <main>
                   <Routes>
@@ -34,7 +34,7 @@ function App() {
                     <Route
                       path="/blog/new"
                       element={
-                        <ProtectedRoute>
+                        <ProtectedRoute adminOnly>
                           <NewBlogPost />
                         </ProtectedRoute>
                       }
@@ -42,7 +42,7 @@ function App() {
                     <Route
                       path="/admin"
                       element={
-                        <ProtectedRoute>
+                        <ProtectedRoute adminOnly>
                           <UnifiedAdmin />
                         </ProtectedRoute>
                       }
@@ -59,14 +59,32 @@ function App() {
                     <Route path="/blog/:id" element={<BlogPost />} />
                     <Route path="/catalog" element={<CatalogRedesign />} />
                     <Route path="/music" element={<CatalogRedesign />} />
-                    <Route path="/account" element={<AccountDashboard />} />
+                    <Route
+                      path="/checkout"
+                      element={
+                        <ProtectedRoute>
+                          <CheckoutPage />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/payment-success"
+                      element={<PaymentSuccess onContinueShopping={() => window.location.href = '/catalog'} />}
+                    />
+                    <Route
+                      path="/account"
+                      element={
+                        <ProtectedRoute>
+                          <AccountDashboard />
+                        </ProtectedRoute>
+                      }
+                    />
                   </Routes>
                 </main>
                 <FooterRedesign />
                 <UserModal />
-              </MusicProvider>
-            </BlogProvider>
-          </AuthProvider>
+            </MusicProvider>
+          </BlogProvider>
         </UserProvider>
       </Elements>
     </Suspense>

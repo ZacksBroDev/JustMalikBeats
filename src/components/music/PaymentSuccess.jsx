@@ -5,6 +5,25 @@ import './PaymentSuccess.css';
 
 const PaymentSuccess = ({ onContinueShopping }) => {
   const { purchases } = useMusic();
+  const recentPurchases = purchases.slice(-3);
+
+  const downloadReceipt = (track) => {
+    const receipt = [
+      'JustMalikBeats Demo Purchase',
+      `Track: ${track.title}`,
+      `Artist: ${track.artist}`,
+      `Price: $${Number(track.price).toFixed(2)}`,
+      `Purchased: ${new Date(track.purchaseDate).toLocaleString()}`,
+      '',
+      'This is a simulated demo purchase. No payment was processed.',
+    ].join('\n');
+    const url = URL.createObjectURL(new Blob([receipt], { type: 'text/plain' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${track.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-receipt.txt`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="payment-success">
@@ -12,24 +31,22 @@ const PaymentSuccess = ({ onContinueShopping }) => {
         <div className="checkmark">✓</div>
       </div>
       
-      <h1>Payment Successful!</h1>
-      <p>Thank you for your purchase. Your tracks are ready to download.</p>
+      <h1>Demo purchase complete</h1>
+      <p>Your simulated order has been saved to your account.</p>
       
       <div className="purchased-tracks">
         <h3>Your Purchased Tracks:</h3>
-        {purchases.slice(-3).map(track => (
+        {recentPurchases.map(track => (
           <div key={track.id} className="purchased-track">
             <div className="track-info">
               <h4>{track.title}</h4>
               <p>{track.artist} • {track.genre}</p>
             </div>
             <div className="download-actions">
-              <button className="download-btn">
-                Download MP3
+              <button className="download-btn" onClick={() => downloadReceipt(track)}>
+                Download Receipt
               </button>
-              <button className="download-btn stems">
-                Download Stems
-              </button>
+              <span className="download-unavailable">Audio not configured</span>
             </div>
           </div>
         ))}
@@ -48,8 +65,8 @@ const PaymentSuccess = ({ onContinueShopping }) => {
       </div>
       
       <div className="support-info">
-        <p>📧 Download links have been sent to your email</p>
-        <p>❓ Questions? Contact support@justmalikbeats.com</p>
+        <p>This demo does not process a real payment or deliver audio files.</p>
+        <p>Audio downloads will appear here when licensed files are configured.</p>
       </div>
     </div>
   );

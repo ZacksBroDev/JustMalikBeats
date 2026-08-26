@@ -86,14 +86,15 @@ export const getAuthHeaders = () => {
 // Helper function to make API requests
 export const apiRequest = async (endpoint, options = {}) => {
   const url = buildApiUrl(endpoint);
+  const { skipAuthRedirect = false, ...requestOptions } = options;
 
   const config = {
     headers: {
       "Content-Type": "application/json",
       ...getAuthHeaders(),
-      ...options.headers,
+      ...requestOptions.headers,
     },
-    ...options,
+    ...requestOptions,
   };
 
   try {
@@ -101,7 +102,7 @@ export const apiRequest = async (endpoint, options = {}) => {
     const response = await fetch(url, config);
 
     // Handle unauthorized responses
-    if (response.status === 401) {
+    if (response.status === 401 && !skipAuthRedirect) {
       localStorage.removeItem("justmalik_auth_token");
       localStorage.removeItem("justmalik_user_data");
       window.location.href = "/";
@@ -110,7 +111,7 @@ export const apiRequest = async (endpoint, options = {}) => {
 
     if (!response.ok) {
       const error = await response.json();
-      throw new Error(error.message || "Request failed");
+      throw new Error(error.error || error.message || "Request failed");
     }
 
     return await response.json();

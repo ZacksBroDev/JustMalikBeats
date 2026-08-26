@@ -29,7 +29,7 @@ const UserModal = () => {
 
     try {
       if (isLogin) {
-        const result = login(formData.email, formData.password);
+        const result = await login(formData.email, formData.password);
         if (!result.success) {
           setError(result.error);
         }
@@ -40,13 +40,13 @@ const UserModal = () => {
           setIsLoading(false);
           return;
         }
-        if (formData.password.length < 6) {
-          setError('Password must be at least 6 characters');
+        if (formData.password.length < 8) {
+          setError('Password must be at least 8 characters');
           setIsLoading(false);
           return;
         }
 
-        const result = register({
+        const result = await register({
           email: formData.email,
           password: formData.password,
           name: formData.name
@@ -56,7 +56,7 @@ const UserModal = () => {
           setError(result.error);
         }
       }
-    } catch (error) {
+    } catch {
       setError('An error occurred. Please try again.');
     } finally {
       setIsLoading(false);

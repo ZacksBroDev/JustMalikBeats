@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-import { beatImages } from '../assets/images/imageAssets';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { apiRequest } from '../config/api';
 
 const MusicContext = createContext();
 
@@ -11,56 +11,47 @@ export const useMusic = () => {
   return context;
 };
 
-// Sample music catalog
-const musicCatalog = [
-  {
-    id: 1,
-    title: "Denver Nights",
-    artist: "JustMalikBeats",
-    price: 2.99,
-    priceId: "price_1234567890", // Stripe Price ID
-    audioPreview: "/audio/previews/denver-nights-preview.mp3",
-    coverImage: beatImages.denverNights,
-    coverAlt: 'Denver Nights beat cover showing a neon-lit city street at night',
-    coverPosition: 'center center',
-    genre: "Hip-Hop",
-    duration: "3:24",
-    description: "A smooth hip-hop beat inspired by Denver's nightlife."
-  },
-  {
-    id: 2,
-    title: "Mountain High",
-    artist: "JustMalikBeats", 
-    price: 3.99,
-    priceId: "price_0987654321",
-    audioPreview: "/audio/previews/mountain-high-preview.mp3",
-    coverImage: beatImages.mountainHigh,
-    coverAlt: 'Mountain High beat cover showing moonlit alpine peaks and a frozen lake',
-    coverPosition: 'center center',
-    genre: "Trap",
-    duration: "2:56",
-    description: "High-energy trap beat with Colorado mountain vibes."
-  },
-  {
-    id: 3,
-    title: "Studio Sessions",
-    artist: "JustMalikBeats",
-    price: 4.99,
-    priceId: "price_1122334455",
-    audioPreview: "/audio/previews/studio-sessions-preview.mp3",
-    coverImage: beatImages.studioSessions,
-    coverAlt: 'Studio Sessions beat cover showing modern production hardware on a studio desk',
-    coverPosition: 'center center',
-    genre: "R&B",
-    duration: "4:12",
-    description: "Smooth R&B instrumental perfect for late-night sessions."
-  }
-];
-
 export const MusicProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [purchases, setPurchases] = useState([]);
-  const [catalog, setCatalog] = useState(musicCatalog);
+  const [purchases, setPurchases] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('justmalik_demo_purchases') || '[]');
+    } catch {
+      return [];
+    }
+  });
+  const [catalog, setCatalog] = useState([]);
+  const [catalogLoading, setCatalogLoading] = useState(true);
+  const [catalogError, setCatalogError] = useState(null);
+
+  const loadCatalog = async () => {
+    setCatalogLoading(true);
+    setCatalogError(null);
+
+    try {
+      const result = await apiRequest('/api/tracks');
+      const tracks = result.tracks.map(track => ({
+        ...track,
+        id: track._id || track.id,
+        coverImage: track.coverImageUrl || track.coverImage,
+        audioPreview: track.audioPreviewUrl || track.audioPreview,
+        length: track.duration || track.length,
+      }));
+      setCatalog(tracks);
+    } catch (error) {
+      setCatalogError(error.message);
+    } finally {
+      setCatalogLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadCatalog();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('justmalik_demo_purchases', JSON.stringify(purchases));
+  }, [purchases]);
 
   const addToCart = (track) => {
     setCart(prev => {
@@ -84,8 +75,7 @@ export const MusicProvider = ({ children }) => {
     const purchaseData = tracks.map(track => ({
       ...track,
       purchaseDate: new Date().toISOString(),
-      downloadUrl: `https://example.com/downloads/track-${track.id}.mp3`,
-      stemsUrl: `https://example.com/downloads/stems-${track.id}.zip`
+      isDemoPurchase: true,
     }));
     setPurchases(prev => [...prev, ...purchaseData]);
     clearCart();
@@ -113,7 +103,10 @@ export const MusicProvider = ({ children }) => {
     addPurchase,
     getTotalPrice,
     addTrack,
-    removeTrack
+    removeTrack,
+    catalogLoading,
+    catalogError,
+    loadCatalog
   };
 
   return (

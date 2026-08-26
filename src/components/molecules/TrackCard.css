@@ -55,6 +55,17 @@
   transform: scale(1.1);
 }
 
+.track-card__play:disabled {
+  background: var(--steel);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.track-card__play:disabled:hover {
+  background: var(--steel);
+  transform: none;
+}
+
 .track-card__content {
   padding: var(--space-5);
 }
@@ -73,6 +84,12 @@
   color: var(--steel);
   font-family: var(--font-mono);
   margin-bottom: var(--space-4);
+}
+
+.track-card__preview-message {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--steel);
 }
 
 .track-card__footer {

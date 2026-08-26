@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useUser } from '../context/UserContext';
 import './AdminLogin.css';
 
 function AdminLogin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { login } = useAuth();
+  const { adminLogin } = useUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
 
-    const success = login(password);
+    const success = await adminLogin(password);
     
     if (!success) {
       setError('Invalid password. Please try again.');

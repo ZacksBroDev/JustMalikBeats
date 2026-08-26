@@ -1,9 +1,9 @@
 import React from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useUser } from '../context/UserContext';
 import AdminLogin from './AdminLogin';
 
-function ProtectedRoute({ children }) {
-  const { isAuthenticated, loading } = useAuth();
+function ProtectedRoute({ children, adminOnly = false }) {
+  const { currentUser, isLoggedIn, loading, openLoginModal } = useUser();
 
   if (loading) {
     return (
@@ -21,7 +21,22 @@ function ProtectedRoute({ children }) {
     );
   }
 
-  return isAuthenticated ? children : <AdminLogin />;
+  if (!isLoggedIn) {
+    return adminOnly ? (
+      <AdminLogin />
+    ) : (
+      <div className="protected-route-message">
+        <h1>Sign in to continue</h1>
+        <button type="button" onClick={openLoginModal}>Sign In</button>
+      </div>
+    );
+  }
+
+  if (adminOnly && currentUser?.role !== 'admin') {
+    return <div className="protected-route-message">Admin access required.</div>;
+  }
+
+  return children;
 }
 
 export default ProtectedRoute;

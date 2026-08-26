@@ -1,42 +1,20 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
+import { useMusic } from '../../context/MusicContext';
 import Button from '../../components/atoms/Button';
 import Card from '../../components/atoms/Card';
 import './AccountDashboard.css';
 
 const AccountDashboard = () => {
-  const { user } = useUser();
+  const { currentUser: user } = useUser();
+  const { purchases } = useMusic();
   const [showProfileEdit, setShowProfileEdit] = useState(false);
-
-  // Sample purchase history - replace with actual data
-  const purchases = [
-    {
-      id: 1,
-      title: "Dark Phonk Beat",
-      date: "2024-01-15",
-      price: 29.99,
-      downloadUrl: "/downloads/dark-phonk-beat.zip"
-    },
-    {
-      id: 2,
-      title: "Trap Soul Beat",
-      date: "2024-01-10",
-      price: 34.99,
-      downloadUrl: "/downloads/trap-soul-beat.zip"
-    },
-    {
-      id: 3,
-      title: "Neon Drill Beat",
-      date: "2024-01-05",
-      price: 24.99,
-      downloadUrl: "/downloads/neon-drill-beat.zip"
-    }
-  ];
 
   const stats = {
     totalPurchases: purchases.length,
     totalSpent: purchases.reduce((sum, p) => sum + p.price, 0),
-    totalDownloads: purchases.length * 2
+    totalDownloads: purchases.reduce((sum, purchase) => sum + (purchase.downloadCount || 0), 0)
   };
 
   const formatDate = (dateStr) => {
@@ -48,8 +26,22 @@ const AccountDashboard = () => {
     });
   };
 
-  const handleDownload = (downloadUrl) => {
-    window.location.href = downloadUrl;
+  const downloadReceipt = (purchase) => {
+    const receipt = [
+      'JustMalikBeats Demo Purchase',
+      `Track: ${purchase.title}`,
+      `Artist: ${purchase.artist}`,
+      `Price: $${Number(purchase.price).toFixed(2)}`,
+      `Purchased: ${new Date(purchase.purchaseDate).toLocaleString()}`,
+      '',
+      'This is a simulated demo purchase. No payment was processed.',
+    ].join('\n');
+    const url = URL.createObjectURL(new Blob([receipt], { type: 'text/plain' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${purchase.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-receipt.txt`;
+    link.click();
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -142,19 +134,19 @@ const AccountDashboard = () => {
                 {purchases.map((purchase) => (
                   <div key={purchase.id} className="purchase-table__row">
                     <div className="purchase-table__title">{purchase.title}</div>
-                    <div className="purchase-table__date">{formatDate(purchase.date)}</div>
+                    <div className="purchase-table__date">{formatDate(purchase.purchaseDate)}</div>
                     <div className="purchase-table__price">${purchase.price.toFixed(2)}</div>
                     <div className="purchase-table__action">
                       <button
                         className="download-button"
-                        onClick={() => handleDownload(purchase.downloadUrl)}
+                        onClick={() => downloadReceipt(purchase)}
                       >
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                           <path d="M17.5 12.5V15.8333C17.5 16.2754 17.3244 16.6993 17.0118 17.0118C16.6993 17.3244 16.2754 17.5 15.8333 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V12.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                           <path d="M5.83334 8.33333L10 12.5L14.1667 8.33333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                           <path d="M10 12.5V2.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
-                        Download
+                        Download Receipt
                       </button>
                     </div>
                   </div>
@@ -164,7 +156,9 @@ const AccountDashboard = () => {
           ) : (
             <div className="account__empty">
               <p>No purchases yet</p>
-              <Button variant="primary" size="md">Browse Catalog</Button>
+              <Link to="/catalog">
+                <Button variant="primary" size="md">Browse Catalog</Button>
+              </Link>
             </div>
           )}
         </section>
