@@ -1,67 +1,66 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const purchaseSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+    ref: "User",
   },
   track: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Track',
-    required: true
+    ref: "Track",
+    required: true,
   },
   stripePaymentIntentId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   stripeChargeId: {
-    type: String
+    type: String,
   },
   amount: {
     type: Number,
-    required: true
+    required: true,
   },
   currency: {
     type: String,
-    default: 'usd'
+    default: "usd",
   },
   status: {
     type: String,
-    enum: ['pending', 'completed', 'failed', 'refunded'],
-    default: 'pending'
+    enum: ["pending", "completed", "failed", "refunded"],
+    default: "pending",
   },
   downloadToken: {
     type: String,
-    unique: true
+    unique: true,
   },
   downloadCount: {
     type: Number,
-    default: 0
+    default: 0,
   },
   maxDownloads: {
     type: Number,
-    default: 3
+    default: 3,
   },
   downloadExpiry: {
-    type: Date
+    type: Date,
   },
   customerEmail: {
     type: String,
-    required: true
+    required: true,
   },
   purchasedAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 // Generate download token before saving
-purchaseSchema.pre('save', function(next) {
+purchaseSchema.pre("save", function (next) {
   if (!this.downloadToken) {
-    const crypto = require('crypto');
-    this.downloadToken = crypto.randomBytes(32).toString('hex');
+    const crypto = require("crypto");
+    this.downloadToken = crypto.randomBytes(32).toString("hex");
   }
   if (!this.downloadExpiry) {
     // Set expiry to 30 days from purchase
@@ -70,4 +69,5 @@ purchaseSchema.pre('save', function(next) {
   next();
 });
 
-module.exports = mongoose.model('Purchase', purchaseSchema);
+module.exports =
+  mongoose.models.Purchase || mongoose.model("Purchase", purchaseSchema);
